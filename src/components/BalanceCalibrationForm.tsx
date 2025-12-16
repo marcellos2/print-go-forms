@@ -232,27 +232,73 @@ export function BalanceCalibrationForm() {
         {/* Left Eccentricity */}
         <div className="border border-black p-2">
           <h4 className="font-bold mb-2 text-[9px]">Excentricidade:</h4>
-          <div className="flex gap-4">
-            <div className="flex flex-col items-center gap-2">
-              {/* Circle diagram */}
-              <div className="w-12 h-12 border border-black rounded-full relative">
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[7px]">1</span>
-                <span className="absolute top-1/2 -right-3 -translate-y-1/2 text-[7px]">2</span>
-                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[7px]">3</span>
-                <span className="absolute top-1/2 -left-3 -translate-y-1/2 text-[7px]">4</span>
+          <div className="flex gap-3">
+            <div className="flex flex-col items-center gap-1">
+              {/* Circle diagram - faithful to original */}
+              <div className="flex items-center gap-1">
+                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                  {/* Outer circle */}
+                  <circle cx="24" cy="24" r="18" fill="none" stroke="black" strokeWidth="1"/>
+                  {/* Cross lines */}
+                  <line x1="24" y1="6" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <line x1="6" y1="24" x2="42" y2="24" stroke="black" strokeWidth="0.5"/>
+                  {/* Corner dots with circles */}
+                  <circle cx="24" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="24" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="6" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  {/* Numbers */}
+                  <text x="24" y="-2" textAnchor="middle" fontSize="8" fill="black">1</text>
+                  <text x="54" y="27" textAnchor="middle" fontSize="8" fill="black">2</text>
+                  <text x="24" y="56" textAnchor="middle" fontSize="8" fill="black">3</text>
+                  <text x="-6" y="27" textAnchor="middle" fontSize="8" fill="black">4</text>
+                </svg>
+                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
-              {/* Square diagram */}
-              <div className="w-12 h-12 border border-black relative">
-                <span className="absolute -top-2 -left-1 text-[7px]">1</span>
-                <span className="absolute -top-2 -right-1 text-[7px]">2</span>
-                <span className="absolute -bottom-2 -right-1 text-[7px]">3</span>
-                <span className="absolute -bottom-2 -left-1 text-[7px]">4</span>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 border border-black"></div>
+
+              {/* Square diagram - faithful to original */}
+              <div className="flex items-center gap-1">
+                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                  {/* Outer square */}
+                  <rect x="6" y="6" width="36" height="36" fill="none" stroke="black" strokeWidth="1"/>
+                  {/* Diagonal lines */}
+                  <line x1="6" y1="6" x2="42" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <line x1="42" y1="6" x2="6" y2="42" stroke="black" strokeWidth="0.5"/>
+                  {/* Center square */}
+                  <rect x="20" y="20" width="8" height="8" fill="none" stroke="black" strokeWidth="0.5"/>
+                  {/* Corner circles */}
+                  <circle cx="6" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  {/* Numbers */}
+                  <text x="-2" y="2" textAnchor="middle" fontSize="8" fill="black">1</text>
+                  <text x="50" y="2" textAnchor="middle" fontSize="8" fill="black">2</text>
+                  <text x="50" y="52" textAnchor="middle" fontSize="8" fill="black">3</text>
+                  <text x="-2" y="52" textAnchor="middle" fontSize="8" fill="black">4</text>
+                </svg>
+                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
-              {/* Triangle diagram */}
-              <div className="w-0 h-0 border-l-[24px] border-r-[24px] border-b-[40px] border-l-transparent border-r-transparent border-b-black relative">
-                <span className="absolute top-8 -left-8 text-[7px]">5</span>
-                <span className="absolute top-8 left-4 text-[7px]">6</span>
+
+              {/* Triangle diagram - faithful to original */}
+              <div className="flex items-center gap-1">
+                <svg width="56" height="52" viewBox="-8 -4 64 56" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                  {/* Triangle outline */}
+                  <polygon points="24,4 6,42 42,42" fill="none" stroke="black" strokeWidth="1"/>
+                  {/* Inner lines from corners to opposite midpoints */}
+                  <line x1="24" y1="4" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <line x1="6" y1="42" x2="33" y2="23" stroke="black" strokeWidth="0.5"/>
+                  <line x1="42" y1="42" x2="15" y2="23" stroke="black" strokeWidth="0.5"/>
+                  {/* Center small circle */}
+                  <circle cx="24" cy="29" r="4" fill="none" stroke="black" strokeWidth="0.5"/>
+                  {/* Corner circles */}
+                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  {/* Numbers at bottom */}
+                  <text x="-2" y="48" textAnchor="middle" fontSize="8" fill="black">5</text>
+                  <text x="50" y="48" textAnchor="middle" fontSize="8" fill="black">6</text>
+                </svg>
+                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
             </div>
             <div className="flex-1">
@@ -283,27 +329,59 @@ export function BalanceCalibrationForm() {
         {/* Right Eccentricity */}
         <div className="border border-black p-2">
           <h4 className="font-bold mb-2 text-[9px]">Excentricidade:</h4>
-          <div className="flex gap-4">
-            <div className="flex flex-col items-center gap-2">
+          <div className="flex gap-3">
+            <div className="flex flex-col items-center gap-1">
               {/* Circle diagram */}
-              <div className="w-12 h-12 border border-black rounded-full relative">
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[7px]">1</span>
-                <span className="absolute top-1/2 -right-3 -translate-y-1/2 text-[7px]">2</span>
-                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[7px]">3</span>
-                <span className="absolute top-1/2 -left-3 -translate-y-1/2 text-[7px]">4</span>
+              <div className="flex items-center gap-1">
+                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                  <circle cx="24" cy="24" r="18" fill="none" stroke="black" strokeWidth="1"/>
+                  <line x1="24" y1="6" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <line x1="6" y1="24" x2="42" y2="24" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="24" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="24" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="6" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <text x="24" y="-2" textAnchor="middle" fontSize="8" fill="black">1</text>
+                  <text x="54" y="27" textAnchor="middle" fontSize="8" fill="black">2</text>
+                  <text x="24" y="56" textAnchor="middle" fontSize="8" fill="black">3</text>
+                  <text x="-6" y="27" textAnchor="middle" fontSize="8" fill="black">4</text>
+                </svg>
+                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
+
               {/* Square diagram */}
-              <div className="w-12 h-12 border border-black relative">
-                <span className="absolute -top-2 -left-1 text-[7px]">1</span>
-                <span className="absolute -top-2 -right-1 text-[7px]">2</span>
-                <span className="absolute -bottom-2 -right-1 text-[7px]">3</span>
-                <span className="absolute -bottom-2 -left-1 text-[7px]">4</span>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 border border-black"></div>
+              <div className="flex items-center gap-1">
+                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                  <rect x="6" y="6" width="36" height="36" fill="none" stroke="black" strokeWidth="1"/>
+                  <line x1="6" y1="6" x2="42" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <line x1="42" y1="6" x2="6" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <rect x="20" y="20" width="8" height="8" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="6" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <text x="-2" y="2" textAnchor="middle" fontSize="8" fill="black">1</text>
+                  <text x="50" y="2" textAnchor="middle" fontSize="8" fill="black">2</text>
+                  <text x="50" y="52" textAnchor="middle" fontSize="8" fill="black">3</text>
+                  <text x="-2" y="52" textAnchor="middle" fontSize="8" fill="black">4</text>
+                </svg>
+                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
+
               {/* Triangle diagram */}
-              <div className="w-0 h-0 border-l-[24px] border-r-[24px] border-b-[40px] border-l-transparent border-r-transparent border-b-black relative">
-                <span className="absolute top-8 -left-8 text-[7px]">5</span>
-                <span className="absolute top-8 left-4 text-[7px]">6</span>
+              <div className="flex items-center gap-1">
+                <svg width="56" height="52" viewBox="-8 -4 64 56" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                  <polygon points="24,4 6,42 42,42" fill="none" stroke="black" strokeWidth="1"/>
+                  <line x1="24" y1="4" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
+                  <line x1="6" y1="42" x2="33" y2="23" stroke="black" strokeWidth="0.5"/>
+                  <line x1="42" y1="42" x2="15" y2="23" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="24" cy="29" r="4" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
+                  <text x="-2" y="48" textAnchor="middle" fontSize="8" fill="black">5</text>
+                  <text x="50" y="48" textAnchor="middle" fontSize="8" fill="black">6</text>
+                </svg>
+                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
             </div>
             <div className="flex-1">
