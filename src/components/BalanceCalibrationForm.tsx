@@ -15,14 +15,14 @@ export function BalanceCalibrationForm() {
   const positionRows = [1, 2, 3, 4, 5, 6];
 
   return (
-    <div className="print-form p-4 max-w-[210mm] mx-auto text-[10px] leading-tight">
+    <div className="print-form p-2 max-w-[210mm] mx-auto text-[9px] leading-tight">
       {/* Header */}
-      <h1 className="text-center font-bold text-sm mb-4 uppercase tracking-wide">
+      <h1 className="text-center font-bold text-xs mb-2 uppercase tracking-wide">
         Registro de Calibração de Balança
       </h1>
 
       {/* Main Info Grid */}
-      <div className="grid grid-cols-2 gap-x-4 mb-4">
+      <div className="grid grid-cols-2 gap-x-3 mb-2">
         {/* Left Column */}
         <div className="space-y-1">
           <div className="flex">
@@ -101,7 +101,7 @@ export function BalanceCalibrationForm() {
       </div>
 
       {/* Calibration Sections */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-2 mb-2">
         {/* Sem Ajuste */}
         <div className="border border-black p-2">
           <h3 className="font-bold text-center mb-2 text-[9px]">Calibração Sem Ajuste ou Antes do Ajuste</h3>
@@ -174,7 +174,7 @@ export function BalanceCalibrationForm() {
       </div>
 
       {/* Measurements Tables */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-2 mb-2">
         <div>
           <h4 className="font-bold text-center mb-1 text-[9px]">Medições</h4>
           <table className="print-table text-[8px]">
@@ -228,7 +228,7 @@ export function BalanceCalibrationForm() {
       </div>
 
       {/* Eccentricity Section */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-2 mb-2">
         {/* Left Eccentricity */}
         <div className="border border-black p-2">
           <h4 className="font-bold mb-2 text-[9px]">Excentricidade:</h4>
@@ -411,18 +411,18 @@ export function BalanceCalibrationForm() {
       </div>
 
       {/* Calibration Method */}
-      <div className="mb-3">
-        <h4 className="font-bold text-[9px]">Método de Calibração:</h4>
-        <p className="text-[9px]">Calibração por comparação direta conforme procedimento técnico PTMA.</p>
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px]">Método de Calibração:</h4>
+        <p className="text-[8px]">Calibração por comparação direta conforme procedimento técnico PTMA.</p>
       </div>
 
       {/* Standards Used */}
-      <div className="mb-3">
-        <h4 className="font-bold text-[9px] mb-1">Padrões Utilizados:</h4>
-        <div className="grid grid-cols-3 gap-x-4 gap-y-1 text-[9px]">
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+        <div className="grid grid-cols-4 gap-x-2 gap-y-0.5 text-[8px]">
           {['32', '34', '36', '66', '72', '73', '79', '94'].map((num) => (
-            <label key={num} className="flex items-center gap-1">
-              <span className="w-3 h-3 border border-black inline-block"></span>
+            <label key={num} className="flex items-center gap-0.5">
+              <span className="w-2.5 h-2.5 border border-black inline-block"></span>
               <span>{num} Jogo pesos padrão</span>
             </label>
           ))}
@@ -431,10 +431,10 @@ export function BalanceCalibrationForm() {
 
       {/* Observations */}
       <div>
-        <h4 className="font-bold text-[9px]">Observações:</h4>
-        <div className="border-b border-black h-4 mb-1"></div>
-        <div className="border-b border-black h-4 mb-1"></div>
-        <div className="border-b border-black h-4"></div>
+        <h4 className="font-bold text-[8px]">Observações:</h4>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3"></div>
       </div>
     </div>
   );
