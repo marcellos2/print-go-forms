@@ -235,7 +235,7 @@ export function ManometerCalibrationForm() {
 
       {/* Footer */}
       <div className="text-center mt-2 text-[8px] text-muted-foreground">
-        FRCAL 001/REV.03 - Página 1 de 1
+     Página 1 de 1
       </div>
     </div>
   );

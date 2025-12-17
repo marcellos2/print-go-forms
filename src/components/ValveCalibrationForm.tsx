@@ -248,7 +248,7 @@ export function ValveCalibrationForm() {
 
       {/* Footer */}
       <div className="text-center mt-2 text-[8px] text-muted-foreground">
-        FRCAL 005/REV.02 - Página 1 de 1
+        - Página 1 de 1
       </div>
     </div>
   );
