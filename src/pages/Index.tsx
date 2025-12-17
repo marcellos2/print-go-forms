@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Scale, Gauge, Settings2, FileText } from "lucide-react";
+import { Scale, Gauge, Settings2, FileText, Zap, Activity, Workflow } from "lucide-react";
 import { EquipmentCard } from "@/components/EquipmentCard";
 import { PrintDialog } from "@/components/PrintDialog";
 import { PrintPreview } from "@/components/PrintPreview";
 
+export type EquipmentType = "balance" | "manometer" | "valve" | "multimeter" | "flowmeter" | "flowmeter-bench";
+
 type Equipment = {
-  id: string;
+  id: EquipmentType;
   title: string;
   description: string;
   icon: typeof Scale;
@@ -23,23 +25,44 @@ const equipments: Equipment[] = [
   {
     id: "manometer",
     title: "Manômetro",
-    description: "Ficha de calibração de manômetros e instrumentos de pressão",
+    description: "Ficha de calibração de instrumentos de pressão",
     icon: Gauge,
-    available: false,
+    available: true,
   },
   {
     id: "valve",
-    title: "Válvulas",
-    description: "Registro de verificação e calibração de válvulas",
+    title: "Válvula de Segurança",
+    description: "Registro de calibração de válvulas de segurança e/ou alívio",
     icon: Settings2,
-    available: false,
+    available: true,
+  },
+  {
+    id: "multimeter",
+    title: "Multímetro",
+    description: "Registro de calibração de multímetros",
+    icon: Zap,
+    available: true,
+  },
+  {
+    id: "flowmeter",
+    title: "Medidor de Vazão",
+    description: "Registro de calibração de medidores de vazão",
+    icon: Activity,
+    available: true,
+  },
+  {
+    id: "flowmeter-bench",
+    title: "Medidor de Vazão (Bancada)",
+    description: "Registro de calibração de vazão em bancada",
+    icon: Workflow,
+    available: true,
   },
 ];
 
 export default function Index() {
   const [selectedEquipment, setSelectedEquipment] = useState<Equipment | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [printQuantity, setPrintQuantity] = useState<number | null>(null);
+  const [printData, setPrintData] = useState<{ quantity: number; equipmentType: EquipmentType } | null>(null);
 
   const handleEquipmentClick = (equipment: Equipment) => {
     setSelectedEquipment(equipment);
@@ -47,17 +70,19 @@ export default function Index() {
   };
 
   const handlePrint = (quantity: number) => {
-    setPrintQuantity(quantity);
+    if (selectedEquipment) {
+      setPrintData({ quantity, equipmentType: selectedEquipment.id });
+    }
   };
 
   const handleBack = () => {
-    setPrintQuantity(null);
+    setPrintData(null);
     setSelectedEquipment(null);
   };
 
   // Show print preview
-  if (printQuantity !== null) {
-    return <PrintPreview quantity={printQuantity} onBack={handleBack} />;
+  if (printData !== null) {
+    return <PrintPreview quantity={printData.quantity} equipmentType={printData.equipmentType} onBack={handleBack} />;
   }
 
   return (

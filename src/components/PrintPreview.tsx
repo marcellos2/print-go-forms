@@ -1,19 +1,46 @@
 import { useRef } from "react";
 import { BalanceCalibrationForm } from "./BalanceCalibrationForm";
+import { ManometerCalibrationForm } from "./ManometerCalibrationForm";
+import { ValveCalibrationForm } from "./ValveCalibrationForm";
+import { MultimeterCalibrationForm } from "./MultimeterCalibrationForm";
+import { FlowMeterCalibrationForm } from "./FlowMeterCalibrationForm";
+import { FlowMeterBenchCalibrationForm } from "./FlowMeterBenchCalibrationForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
+import type { EquipmentType } from "@/pages/Index";
 
 interface PrintPreviewProps {
   quantity: number;
+  equipmentType: EquipmentType;
   onBack: () => void;
 }
 
-export function PrintPreview({ quantity, onBack }: PrintPreviewProps) {
+const formComponents: Record<EquipmentType, React.ComponentType> = {
+  balance: BalanceCalibrationForm,
+  manometer: ManometerCalibrationForm,
+  valve: ValveCalibrationForm,
+  multimeter: MultimeterCalibrationForm,
+  flowmeter: FlowMeterCalibrationForm,
+  "flowmeter-bench": FlowMeterBenchCalibrationForm,
+};
+
+const equipmentTitles: Record<EquipmentType, string> = {
+  balance: "Balança",
+  manometer: "Manômetro",
+  valve: "Válvula de Segurança",
+  multimeter: "Multímetro",
+  flowmeter: "Medidor de Vazão",
+  "flowmeter-bench": "Medidor de Vazão (Bancada)",
+};
+
+export function PrintPreview({ quantity, equipmentType, onBack }: PrintPreviewProps) {
   const printRef = useRef<HTMLDivElement>(null);
 
   const handlePrint = () => {
     window.print();
   };
+
+  const FormComponent = formComponents[equipmentType];
 
   return (
     <div className="min-h-screen bg-muted">
@@ -25,7 +52,7 @@ export function PrintPreview({ quantity, onBack }: PrintPreviewProps) {
             Voltar
           </Button>
           <div className="text-sm text-muted-foreground">
-            Pré-visualização: {quantity} {quantity === 1 ? 'ficha' : 'fichas'}
+            {equipmentTitles[equipmentType]} - {quantity} {quantity === 1 ? 'ficha' : 'fichas'}
           </div>
           <Button onClick={handlePrint} className="gap-2">
             <Printer className="w-4 h-4" />
@@ -42,7 +69,7 @@ export function PrintPreview({ quantity, onBack }: PrintPreviewProps) {
               Ficha {index + 1} de {quantity}
             </div>
             <div className="bg-white shadow-md mx-auto mb-4" style={{ maxWidth: '210mm' }}>
-              <BalanceCalibrationForm />
+              <FormComponent />
             </div>
           </div>
         ))}
