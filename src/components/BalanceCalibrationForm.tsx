@@ -234,69 +234,48 @@ export function BalanceCalibrationForm() {
           <h4 className="font-bold mb-2 text-[9px]">Excentricidade:</h4>
           <div className="flex gap-3">
             <div className="flex flex-col items-center gap-1">
-              {/* Circle diagram - faithful to original */}
+              {/* Rectangle diagram with A, B, C, D */}
               <div className="flex items-center gap-1">
-                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
-                  {/* Outer circle */}
-                  <circle cx="24" cy="24" r="18" fill="none" stroke="black" strokeWidth="1"/>
-                  {/* Cross lines */}
-                  <line x1="24" y1="6" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <line x1="6" y1="24" x2="42" y2="24" stroke="black" strokeWidth="0.5"/>
-                  {/* Corner dots with circles */}
-                  <circle cx="24" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="24" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="6" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  {/* Numbers */}
-                  <text x="24" y="-2" textAnchor="middle" fontSize="8" fill="black">1</text>
-                  <text x="54" y="27" textAnchor="middle" fontSize="8" fill="black">2</text>
-                  <text x="24" y="56" textAnchor="middle" fontSize="8" fill="black">3</text>
-                  <text x="-6" y="27" textAnchor="middle" fontSize="8" fill="black">4</text>
-                </svg>
-                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
-              </div>
-
-              {/* Square diagram - faithful to original */}
-              <div className="flex items-center gap-1">
-                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
-                  {/* Outer square */}
-                  <rect x="6" y="6" width="36" height="36" fill="none" stroke="black" strokeWidth="1"/>
+                <svg width="70" height="50" viewBox="0 0 70 50" className="flex-shrink-0">
+                  {/* Outer rectangle */}
+                  <rect x="5" y="5" width="60" height="40" rx="6" ry="6" fill="none" stroke="#333" strokeWidth="1"/>
                   {/* Diagonal lines */}
-                  <line x1="6" y1="6" x2="42" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <line x1="42" y1="6" x2="6" y2="42" stroke="black" strokeWidth="0.5"/>
-                  {/* Center square */}
-                  <rect x="20" y="20" width="8" height="8" fill="none" stroke="black" strokeWidth="0.5"/>
-                  {/* Corner circles */}
-                  <circle cx="6" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  {/* Numbers */}
-                  <text x="-2" y="2" textAnchor="middle" fontSize="8" fill="black">1</text>
-                  <text x="50" y="2" textAnchor="middle" fontSize="8" fill="black">2</text>
-                  <text x="50" y="52" textAnchor="middle" fontSize="8" fill="black">3</text>
-                  <text x="-2" y="52" textAnchor="middle" fontSize="8" fill="black">4</text>
+                  <line x1="10" y1="10" x2="60" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  <line x1="60" y1="10" x2="10" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  {/* Center text */}
+                  <text x="35" y="28" textAnchor="middle" fontSize="8" fill="#666">Centro</text>
+                  {/* Corner circles with letters */}
+                  <circle cx="10" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">B</text>
+                  <circle cx="60" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">D</text>
+                  <circle cx="10" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">A</text>
+                  <circle cx="60" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">C</text>
                 </svg>
                 <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
 
-              {/* Triangle diagram - faithful to original */}
+              {/* Ellipse diagram with A, B, C, D */}
               <div className="flex items-center gap-1">
-                <svg width="56" height="52" viewBox="-8 -4 64 56" className="flex-shrink-0" style={{ overflow: 'visible' }}>
-                  {/* Triangle outline */}
-                  <polygon points="24,4 6,42 42,42" fill="none" stroke="black" strokeWidth="1"/>
-                  {/* Inner lines from corners to opposite midpoints */}
-                  <line x1="24" y1="4" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <line x1="6" y1="42" x2="33" y2="23" stroke="black" strokeWidth="0.5"/>
-                  <line x1="42" y1="42" x2="15" y2="23" stroke="black" strokeWidth="0.5"/>
-                  {/* Center small circle */}
-                  <circle cx="24" cy="29" r="4" fill="none" stroke="black" strokeWidth="0.5"/>
-                  {/* Corner circles */}
-                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  {/* Numbers at bottom */}
-                  <text x="-2" y="48" textAnchor="middle" fontSize="8" fill="black">5</text>
-                  <text x="50" y="48" textAnchor="middle" fontSize="8" fill="black">6</text>
+                <svg width="70" height="50" viewBox="0 0 70 50" className="flex-shrink-0">
+                  {/* Outer ellipse */}
+                  <ellipse cx="35" cy="25" rx="30" ry="20" fill="none" stroke="#333" strokeWidth="1"/>
+                  {/* Diagonal lines */}
+                  <line x1="10" y1="10" x2="60" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  <line x1="60" y1="10" x2="10" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  {/* Center text */}
+                  <text x="35" y="28" textAnchor="middle" fontSize="8" fill="#666">Centro</text>
+                  {/* Corner circles with letters */}
+                  <circle cx="10" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">B</text>
+                  <circle cx="60" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">D</text>
+                  <circle cx="10" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">A</text>
+                  <circle cx="60" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">C</text>
                 </svg>
                 <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
@@ -331,55 +310,48 @@ export function BalanceCalibrationForm() {
           <h4 className="font-bold mb-2 text-[9px]">Excentricidade:</h4>
           <div className="flex gap-3">
             <div className="flex flex-col items-center gap-1">
-              {/* Circle diagram */}
+              {/* Rectangle diagram with A, B, C, D */}
               <div className="flex items-center gap-1">
-                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
-                  <circle cx="24" cy="24" r="18" fill="none" stroke="black" strokeWidth="1"/>
-                  <line x1="24" y1="6" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <line x1="6" y1="24" x2="42" y2="24" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="24" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="24" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="6" cy="24" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <text x="24" y="-2" textAnchor="middle" fontSize="8" fill="black">1</text>
-                  <text x="54" y="27" textAnchor="middle" fontSize="8" fill="black">2</text>
-                  <text x="24" y="56" textAnchor="middle" fontSize="8" fill="black">3</text>
-                  <text x="-6" y="27" textAnchor="middle" fontSize="8" fill="black">4</text>
+                <svg width="70" height="50" viewBox="0 0 70 50" className="flex-shrink-0">
+                  {/* Outer rectangle */}
+                  <rect x="5" y="5" width="60" height="40" rx="6" ry="6" fill="none" stroke="#333" strokeWidth="1"/>
+                  {/* Diagonal lines */}
+                  <line x1="10" y1="10" x2="60" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  <line x1="60" y1="10" x2="10" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  {/* Center text */}
+                  <text x="35" y="28" textAnchor="middle" fontSize="8" fill="#666">Centro</text>
+                  {/* Corner circles with letters */}
+                  <circle cx="10" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">B</text>
+                  <circle cx="60" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">D</text>
+                  <circle cx="10" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">A</text>
+                  <circle cx="60" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">C</text>
                 </svg>
                 <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
 
-              {/* Square diagram */}
+              {/* Ellipse diagram with A, B, C, D */}
               <div className="flex items-center gap-1">
-                <svg width="56" height="56" viewBox="-8 -8 64 64" className="flex-shrink-0" style={{ overflow: 'visible' }}>
-                  <rect x="6" y="6" width="36" height="36" fill="none" stroke="black" strokeWidth="1"/>
-                  <line x1="6" y1="6" x2="42" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <line x1="42" y1="6" x2="6" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <rect x="20" y="20" width="8" height="8" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="6" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="6" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <text x="-2" y="2" textAnchor="middle" fontSize="8" fill="black">1</text>
-                  <text x="50" y="2" textAnchor="middle" fontSize="8" fill="black">2</text>
-                  <text x="50" y="52" textAnchor="middle" fontSize="8" fill="black">3</text>
-                  <text x="-2" y="52" textAnchor="middle" fontSize="8" fill="black">4</text>
-                </svg>
-                <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
-              </div>
-
-              {/* Triangle diagram */}
-              <div className="flex items-center gap-1">
-                <svg width="56" height="52" viewBox="-8 -4 64 56" className="flex-shrink-0" style={{ overflow: 'visible' }}>
-                  <polygon points="24,4 6,42 42,42" fill="none" stroke="black" strokeWidth="1"/>
-                  <line x1="24" y1="4" x2="24" y2="42" stroke="black" strokeWidth="0.5"/>
-                  <line x1="6" y1="42" x2="33" y2="23" stroke="black" strokeWidth="0.5"/>
-                  <line x1="42" y1="42" x2="15" y2="23" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="24" cy="29" r="4" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="6" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <circle cx="42" cy="42" r="3" fill="none" stroke="black" strokeWidth="0.5"/>
-                  <text x="-2" y="48" textAnchor="middle" fontSize="8" fill="black">5</text>
-                  <text x="50" y="48" textAnchor="middle" fontSize="8" fill="black">6</text>
+                <svg width="70" height="50" viewBox="0 0 70 50" className="flex-shrink-0">
+                  {/* Outer ellipse */}
+                  <ellipse cx="35" cy="25" rx="30" ry="20" fill="none" stroke="#333" strokeWidth="1"/>
+                  {/* Diagonal lines */}
+                  <line x1="10" y1="10" x2="60" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  <line x1="60" y1="10" x2="10" y2="40" stroke="#333" strokeWidth="0.5"/>
+                  {/* Center text */}
+                  <text x="35" y="28" textAnchor="middle" fontSize="8" fill="#666">Centro</text>
+                  {/* Corner circles with letters */}
+                  <circle cx="10" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">B</text>
+                  <circle cx="60" cy="10" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="13" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">D</text>
+                  <circle cx="10" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="10" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">A</text>
+                  <circle cx="60" cy="40" r="7" fill="#4DB6AC" stroke="#4DB6AC" strokeWidth="1"/>
+                  <text x="60" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">C</text>
                 </svg>
                 <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
               </div>
