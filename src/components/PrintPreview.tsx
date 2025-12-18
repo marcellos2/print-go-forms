@@ -5,9 +5,14 @@ import { ValveCalibrationForm } from "./ValveCalibrationForm";
 import { MultimeterCalibrationForm } from "./MultimeterCalibrationForm";
 import { FlowMeterCalibrationForm } from "./FlowMeterCalibrationForm";
 import { FlowMeterBenchCalibrationForm } from "./FlowMeterBenchCalibrationForm";
+import { PHMeterCalibrationForm } from "./PHMeterCalibrationForm";
+import { ConductivityMeterCalibrationForm } from "./ConductivityMeterCalibrationForm";
+import { SpectrophotometerCalibrationForm } from "./SpectrophotometerCalibrationForm";
+import { OximeterCalibrationForm } from "./OximeterCalibrationForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
-import type { EquipmentType } from "@/pages/Index";
+import type { EquipmentType } from "@/config/equipments";
+import { getEquipmentTitle } from "@/config/equipments";
 import type { PrintSelection } from "./MultiPrintDialog";
 
 interface PrintPreviewProps {
@@ -22,15 +27,10 @@ const formComponents: Record<EquipmentType, React.ComponentType> = {
   multimeter: MultimeterCalibrationForm,
   flowmeter: FlowMeterCalibrationForm,
   "flowmeter-bench": FlowMeterBenchCalibrationForm,
-};
-
-const equipmentTitles: Record<EquipmentType, string> = {
-  balance: "Balança",
-  manometer: "Manômetro",
-  valve: "Válvula de Segurança",
-  multimeter: "Multímetro",
-  flowmeter: "Medidor de Vazão",
-  "flowmeter-bench": "Medidor de Vazão (Bancada)",
+  "ph-meter": PHMeterCalibrationForm,
+  "conductivity-meter": ConductivityMeterCalibrationForm,
+  "spectrophotometer": SpectrophotometerCalibrationForm,
+  "oximeter": OximeterCalibrationForm,
 };
 
 export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
@@ -40,11 +40,9 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
     window.print();
   };
 
-  // Calculate totals for header
   const totalTypes = selections.length;
   const totalFichas = selections.reduce((sum, s) => sum + s.quantity, 0);
 
-  // Generate all forms to render
   const allForms: { equipmentType: EquipmentType; index: number; globalIndex: number }[] = [];
   let globalIndex = 0;
   selections.forEach((selection) => {
@@ -59,7 +57,6 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
 
   return (
     <div className="min-h-screen bg-muted">
-      {/* Header - Hidden on print */}
       <div className="no-print sticky top-0 z-10 bg-card border-b border-border shadow-sm">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <Button variant="ghost" onClick={onBack} className="gap-2">
@@ -77,7 +74,6 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
         </div>
       </div>
 
-      {/* Print Content */}
       <div ref={printRef} className="py-4">
         {allForms.map((form, idx) => {
           const FormComponent = formComponents[form.equipmentType];
@@ -86,7 +82,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
           return (
             <div key={`${form.equipmentType}-${form.index}`} className={!isLast ? "print-break" : ""}>
               <div className="no-print text-center text-xs text-muted-foreground py-2">
-                {equipmentTitles[form.equipmentType]} - Ficha {form.index + 1} de{" "}
+                {getEquipmentTitle(form.equipmentType)} - Ficha {form.index + 1} de{" "}
                 {selections.find((s) => s.equipmentType === form.equipmentType)?.quantity} (
                 {form.globalIndex + 1}/{totalFichas})
               </div>

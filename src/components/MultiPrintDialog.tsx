@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Printer, Minus, Plus } from "lucide-react";
-import type { EquipmentType } from "@/pages/Index";
+import type { EquipmentType } from "@/config/equipments";
 
 export type PrintSelection = {
   equipmentType: EquipmentType;
@@ -26,7 +26,6 @@ interface MultiPrintDialogProps {
 export function MultiPrintDialog({ open, onOpenChange, equipments, onPrint }: MultiPrintDialogProps) {
   const [selections, setSelections] = useState<Record<EquipmentType, { selected: boolean; quantity: number }>>({} as any);
 
-  // Initialize selections when dialog opens
   useEffect(() => {
     if (open) {
       const initial: Record<EquipmentType, { selected: boolean; quantity: number }> = {} as any;
@@ -40,63 +39,56 @@ export function MultiPrintDialog({ open, onOpenChange, equipments, onPrint }: Mu
   const handleToggle = (id: EquipmentType) => {
     setSelections((prev) => ({
       ...prev,
-      [id]: { ...prev[id], selected: !prev[id]?.selected },
+      [id]: { ...prev[id], selected: !prev[id].selected },
     }));
   };
 
   const handleQuantityChange = (id: EquipmentType, value: number) => {
-    const qty = Math.max(1, Math.min(50, value));
+    const clampedValue = Math.min(50, Math.max(1, value));
     setSelections((prev) => ({
       ...prev,
-      [id]: { ...prev[id], quantity: qty },
+      [id]: { ...prev[id], quantity: clampedValue },
     }));
   };
 
   const handleIncrement = (id: EquipmentType) => {
-    setSelections((prev) => ({
-      ...prev,
-      [id]: { ...prev[id], quantity: Math.min(50, (prev[id]?.quantity || 1) + 1) },
-    }));
+    handleQuantityChange(id, (selections[id]?.quantity || 1) + 1);
   };
 
   const handleDecrement = (id: EquipmentType) => {
-    setSelections((prev) => ({
-      ...prev,
-      [id]: { ...prev[id], quantity: Math.max(1, (prev[id]?.quantity || 1) - 1) },
-    }));
+    handleQuantityChange(id, (selections[id]?.quantity || 1) - 1);
   };
 
   const handlePrint = () => {
-    const result: PrintSelection[] = [];
-    Object.entries(selections).forEach(([id, data]) => {
-      if (data.selected && data.quantity > 0) {
-        result.push({ equipmentType: id as EquipmentType, quantity: data.quantity });
-      }
-    });
-    if (result.length > 0) {
-      onPrint(result);
+    const selected = Object.entries(selections)
+      .filter(([_, value]) => value.selected)
+      .map(([key, value]) => ({
+        equipmentType: key as EquipmentType,
+        quantity: value.quantity,
+      }));
+
+    if (selected.length > 0) {
+      onPrint(selected);
       onOpenChange(false);
     }
   };
 
-  const totalSelected = Object.values(selections).filter((s) => s.selected).length;
-  const totalFichas = Object.values(selections).reduce((sum, s) => (s.selected ? sum + s.quantity : sum), 0);
+  const selectedCount = Object.values(selections).filter((s) => s.selected).length;
+  const totalFichas = Object.values(selections)
+    .filter((s) => s.selected)
+    .reduce((sum, s) => sum + s.quantity, 0);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="max-w-lg max-h-[80vh] overflow-hidden flex flex-col">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Printer className="w-5 h-5 text-primary" />
-            Imprimir Múltiplas Fichas
+            <Printer className="w-5 h-5" />
+            Selecionar Fichas para Impressão
           </DialogTitle>
         </DialogHeader>
 
-        <div className="py-4 space-y-3 max-h-[400px] overflow-y-auto">
-          <p className="text-sm text-muted-foreground mb-4">
-            Selecione os equipamentos e a quantidade de cada um:
-          </p>
-
+        <div className="flex-1 overflow-y-auto py-2 space-y-2">
           {equipments.map((eq) => (
             <div
               key={eq.id}
@@ -111,10 +103,7 @@ export function MultiPrintDialog({ open, onOpenChange, equipments, onPrint }: Mu
                 checked={selections[eq.id]?.selected || false}
                 onCheckedChange={() => handleToggle(eq.id)}
               />
-              <label
-                htmlFor={eq.id}
-                className="flex-1 font-medium text-sm cursor-pointer"
-              >
+              <label htmlFor={eq.id} className="flex-1 font-medium text-sm cursor-pointer">
                 {eq.title}
               </label>
 
@@ -152,22 +141,22 @@ export function MultiPrintDialog({ open, onOpenChange, equipments, onPrint }: Mu
           ))}
         </div>
 
-        <DialogFooter className="flex-col sm:flex-row gap-2">
-          <div className="text-sm text-muted-foreground mr-auto">
-            {totalSelected > 0 && (
-              <span>
-                {totalSelected} {totalSelected === 1 ? "tipo" : "tipos"} · {totalFichas}{" "}
-                {totalFichas === 1 ? "ficha" : "fichas"}
-              </span>
-            )}
+        <DialogFooter className="border-t pt-4">
+          <div className="flex items-center justify-between w-full">
+            <span className="text-sm text-muted-foreground">
+              {selectedCount} {selectedCount === 1 ? "tipo" : "tipos"} · {totalFichas}{" "}
+              {totalFichas === 1 ? "ficha" : "fichas"}
+            </span>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => onOpenChange(false)}>
+                Cancelar
+              </Button>
+              <Button onClick={handlePrint} disabled={selectedCount === 0} className="gap-2">
+                <Printer className="w-4 h-4" />
+                Visualizar
+              </Button>
+            </div>
           </div>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancelar
-          </Button>
-          <Button onClick={handlePrint} disabled={totalSelected === 0} className="gap-2">
-            <Printer className="w-4 h-4" />
-            Imprimir
-          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
