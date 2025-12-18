@@ -87,6 +87,16 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
                 {form.globalIndex + 1}/{totalFichas})
               </div>
               <div className="bg-white shadow-md mx-auto mb-4" style={{ maxWidth: "210mm" }}>
+                {/* Logo no topo */}
+                <div className="flex justify-end px-8 pt-6 pb-4">
+                  <img 
+                    src="https://sistema.tecnoiso.com/wp-content/uploads/2016/09/tecnoiso_logo_R1.png" 
+                    alt="Tecnoiso"
+                    className="h-16 w-auto object-contain"
+                  />
+                </div>
+                
+                {/* Formulário de Calibração */}
                 <FormComponent />
               </div>
             </div>

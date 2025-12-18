@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { FileText, Printer, Search } from "lucide-react";
+import { Printer } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { equipments, categories, getEquipmentsByCategory } from "@/config/equipments";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [printSelections, setPrintSelections] = useState<PrintSelection[] | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -24,14 +22,6 @@ export default function Index() {
     setPrintSelections(null);
   };
 
-  const filteredCategories = categories.map(cat => ({
-    ...cat,
-    equipments: getEquipmentsByCategory(cat.id).filter(eq =>
-      eq.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      eq.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  })).filter(cat => cat.equipments.length > 0);
-
   if (printSelections !== null) {
     return <PrintPreview selections={printSelections} onBack={handleBack} />;
   }
@@ -42,9 +32,11 @@ export default function Index() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <FileText className="w-5 h-5 text-primary-foreground" />
-              </div>
+              <img 
+                src="https://sistema.tecnoiso.com/wp-content/uploads/2016/09/tecnoiso_logo_R1.png" 
+                alt="Tecnoiso"
+                className="h-12 w-auto object-contain"
+              />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Sistema de Coletas</h1>
                 <p className="text-sm text-muted-foreground">Impressão de fichas de calibração</p>
@@ -63,46 +55,40 @@ export default function Index() {
           <h2 className="text-2xl font-semibold text-foreground mb-2">
             Equipamentos Disponíveis ({equipments.length})
           </h2>
-          <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input
-              placeholder="Buscar equipamento..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-          </div>
         </div>
 
         <Accordion type="multiple" defaultValue={categories.map(c => c.id)} className="space-y-2">
-          {filteredCategories.map((category) => (
-            <AccordionItem key={category.id} value={category.id} className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <category.icon className="w-5 h-5 text-primary" />
-                  <span className="font-semibold">{category.title}</span>
-                  <span className="text-sm text-muted-foreground">({category.equipments.length})</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 py-2">
-                  {category.equipments.map((eq) => (
-                    <button
-                      key={eq.id}
-                      onClick={handleOpenDialog}
-                      className="flex items-start gap-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors text-left"
-                    >
-                      <eq.icon className="w-5 h-5 text-muted-foreground mt-0.5" />
-                      <div>
-                        <p className="font-medium text-sm">{eq.title}</p>
-                        <p className="text-xs text-muted-foreground">{eq.description}</p>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
+          {categories.map((category) => {
+            const categoryEquipments = getEquipmentsByCategory(category.id);
+            return (
+              <AccordionItem key={category.id} value={category.id} className="border rounded-lg px-4">
+                <AccordionTrigger className="hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <category.icon className="w-5 h-5 text-primary" />
+                    <span className="font-semibold">{category.title}</span>
+                    <span className="text-sm text-muted-foreground">({categoryEquipments.length})</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 py-2">
+                    {categoryEquipments.map((eq) => (
+                      <button
+                        key={eq.id}
+                        onClick={handleOpenDialog}
+                        className="flex items-start gap-3 p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors text-left"
+                      >
+                        <eq.icon className="w-5 h-5 text-muted-foreground mt-0.5" />
+                        <div>
+                          <p className="font-medium text-sm">{eq.title}</p>
+                          <p className="text-xs text-muted-foreground">{eq.description}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            );
+          })}
         </Accordion>
 
         <div className="mt-8 p-4 rounded-lg bg-muted/50 border border-border">
