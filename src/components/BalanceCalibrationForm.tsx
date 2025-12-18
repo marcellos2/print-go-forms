@@ -392,7 +392,7 @@ export function BalanceCalibrationForm() {
       <div className="mb-1">
         <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
         <div className="grid grid-cols-4 gap-x-2 gap-y-0.5 text-[8px]">
-          {['32', '34', '36', '66', '72', '73', '79', '94'].map((num) => (
+          {['32', '261', '94', '288', '79', '152', '73', '94'].map((num) => (
             <label key={num} className="flex items-center gap-0.5">
               <span className="w-2.5 h-2.5 border border-black inline-block"></span>
               <span>{num} Jogo pesos padrão</span>
