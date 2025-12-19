@@ -12,7 +12,7 @@ export function BalanceCalibrationForm() {
     { padrao: '', vm1: '', vm2: '', vm3: '', ema: '' },
   ];
 
-  const positionRows = [1, 2, 3, 4, 5, 6];
+  const positionRows = ['A', 'B', 'C', 'D', 'CENTRO 1', 'CENTRO 2'];
 
   return (
     <div className="print-form p-2 max-w-[210mm] mx-auto text-[9px] leading-tight">
