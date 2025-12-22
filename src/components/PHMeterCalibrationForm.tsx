@@ -1,31 +1,40 @@
 export function PHMeterCalibrationForm() {
   const phRows = [
-    { vrp: "0.00", ref: "414.10" },
-    { vrp: "2.00", ref: "295.80" },
-    { vrp: "4.00", ref: "177.50" },
-    { vrp: "6.00", ref: "59.20" },
-    { vrp: "8.00", ref: "-59.20" },
-    { vrp: "10.00", ref: "-177.50" },
-    { vrp: "12.00", ref: "-295.80" },
-    { vrp: "14.00", ref: "-414.10" },
+    { vrp: "0,00", ref: "414,10" },
+    { vrp: "2,00", ref: "295,80" },
+    { vrp: "4,00", ref: "177,50" },
+    { vrp: "6,00", ref: "59,20" },
+    { vrp: "8,00", ref: "-59,20" },
+    { vrp: "10,00", ref: "-177,50" },
+    { vrp: "12,00", ref: "-295,80" },
+    { vrp: "14,00", ref: "-414,10" },
   ];
 
   const mvRows = [
-    { vrp: "-500.00" },
-    { vrp: "-300.00" },
-    { vrp: "-100.00" },
-    { vrp: "0.00" },
-    { vrp: "100.00" },
-    { vrp: "300.00" },
-    { vrp: "500.00" },
+    { vrp: "-500,00" },
+    { vrp: "-300,00" },
+    { vrp: "-100,00" },
+    { vrp: "0,00" },
+    { vrp: "100,00" },
+    { vrp: "300,00" },
+    { vrp: "500,00" },
   ];
 
   const solutionRows = [
-    { vrp: "2.00" },
-    { vrp: "4.00" },
-    { vrp: "7.00" },
-    { vrp: "10.00" },
-    { vrp: "12.00" },
+    { vrp: "2,00" },
+    { vrp: "4,00" },
+    { vrp: "7,00" },
+    { vrp: "10,00" },
+    { vrp: "12,00" },
+  ];
+
+  const padroes = [
+    "IP 01 - Microprocessador Portátil",
+    "pH 2,0 - Solução Tampão",
+    "pH 4,0 - Solução Tampão",
+    "pH 7,0 - Solução Tampão",
+    "pH 10,0 - Solução Tampão",
+    "pH 12,0 - Solução Tampão",
   ];
 
   return (
@@ -89,6 +98,10 @@ export function PHMeterCalibrationForm() {
             <span className="flex-1 border-b border-black"></span>
           </div>
           <div className="flex">
+            <span className="font-semibold w-28">Nº da OS:</span>
+            <span className="flex-1 border-b border-black"></span>
+          </div>
+          <div className="flex">
             <span className="font-semibold w-28">Local:</span>
             <span className="flex-1 border-b border-black"></span>
           </div>
@@ -111,7 +124,7 @@ export function PHMeterCalibrationForm() {
           <div className="space-y-0.5 text-[8px]">
             <div className="flex"><span className="w-28">Nº Certificado:</span><span className="flex-1 border-b border-black"></span></div>
             <div className="flex"><span className="w-28">Data de Calibração:</span><span className="flex-1 border-b border-black"></span></div>
-            <div className="flex gap-2"><span>Temp. Amb:</span><span className="w-8 border-b border-black"></span><span>°C</span><span>Umidade:</span><span className="w-8 border-b border-black"></span><span>%</span></div>
+            <div className="flex gap-2"><span>Temp. Amb.:</span><span className="w-8 border-b border-black"></span><span>°C</span><span>Umidade:</span><span className="w-8 border-b border-black"></span><span>%</span></div>
             <div className="flex"><span className="w-28">Temp. da Solução:</span><span className="flex-1 border-b border-black"></span></div>
             <div className="flex"><span className="w-28">Local de Calibração:</span><span className="flex-1 border-b border-black"></span></div>
             <div className="flex"><span className="w-28">Técnico de Calibração:</span><span className="flex-1 border-b border-black"></span></div>
@@ -124,7 +137,7 @@ export function PHMeterCalibrationForm() {
           <div className="space-y-0.5 text-[8px]">
             <div className="flex"><span className="w-28">Nº Certificado:</span><span className="flex-1 border-b border-black"></span></div>
             <div className="flex"><span className="w-28">Data de Calibração:</span><span className="flex-1 border-b border-black"></span></div>
-            <div className="flex gap-2"><span>Temp.:</span><span className="w-8 border-b border-black"></span><span>°C</span><span>Umidade:</span><span className="w-8 border-b border-black"></span><span>%</span></div>
+            <div className="flex gap-2"><span>Temp. Amb.:</span><span className="w-8 border-b border-black"></span><span>°C</span><span>Umidade:</span><span className="w-8 border-b border-black"></span><span>%</span></div>
             <div className="flex"><span className="w-28">Temp. da Solução:</span><span className="flex-1 border-b border-black"></span></div>
             <div className="flex"><span className="w-28">Local de Calibração:</span><span className="flex-1 border-b border-black"></span></div>
             <div className="flex"><span className="w-28">Técnico de Calibração:</span><span className="flex-1 border-b border-black"></span></div>
@@ -143,9 +156,9 @@ export function PHMeterCalibrationForm() {
           <thead>
             <tr>
               <th>(VRP) pH</th>
-              <th>Leit 1 (pH)</th>
-              <th>Leit 2 (pH)</th>
-              <th>Leit 3 (pH)</th>
+              <th>Leit. 1 (pH)</th>
+              <th>Leit. 2 (pH)</th>
+              <th>Leit. 3 (pH)</th>
               <th>Ref. (mV)</th>
             </tr>
           </thead>
@@ -171,9 +184,9 @@ export function PHMeterCalibrationForm() {
             <thead>
               <tr>
                 <th>(VRP) mV</th>
-                <th>Leit 1 (mV)</th>
-                <th>Leit 2 (mV)</th>
-                <th>Leit 3 (mV)</th>
+                <th>Leit. 1 (mV)</th>
+                <th>Leit. 2 (mV)</th>
+                <th>Leit. 3 (mV)</th>
               </tr>
             </thead>
             <tbody>
@@ -194,9 +207,9 @@ export function PHMeterCalibrationForm() {
             <thead>
               <tr>
                 <th>(VRP) pH</th>
-                <th>Leit 1 (pH)</th>
-                <th>Leit 2 (pH)</th>
-                <th>Leit 3 (pH)</th>
+                <th>Leit. 1 (pH)</th>
+                <th>Leit. 2 (pH)</th>
+                <th>Leit. 3 (pH)</th>
               </tr>
             </thead>
             <tbody>
@@ -209,7 +222,7 @@ export function PHMeterCalibrationForm() {
                 </tr>
               ))}
               <tr>
-                <td colSpan={2} className="text-right">Slope (%):</td>
+                <td colSpan={2} className="text-right font-semibold">Slope (%):</td>
                 <td colSpan={2}></td>
               </tr>
             </tbody>
@@ -217,17 +230,32 @@ export function PHMeterCalibrationForm() {
         </div>
       </div>
 
-      {/* Método e Padrões */}
-      <div className="border border-black p-1 mb-2">
-        <p className="text-[8px]"><strong>Método de Calibração:</strong> Calibração por comparação indireta conforme procedimento técnico PTFQ 01.</p>
-        <p className="text-[8px] mt-1"><strong>Padrões Utilizados:</strong> IP 01 - Microprocessador Portátil, pH 2,0 / 4,0 / 7,0 / 10,0 / 12,0 Solução Buffer</p>
+      {/* Método de Calibração */}
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px]">Método de Calibração:</h4>
+        <p className="text-[8px]">Calibração por comparação indireta conforme procedimento técnico PTFQ 01.</p>
+      </div>
+
+      {/* Padrões Utilizados */}
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+        <div className="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[8px]">
+          {padroes.map((padrao) => (
+            <label key={padrao} className="flex items-center gap-0.5">
+              <span className="w-2.5 h-2.5 border border-black inline-block"></span>
+              <span>{padrao}</span>
+            </label>
+          ))}
+        </div>
       </div>
 
       {/* Observações */}
-      <div className="border border-black p-1">
-        <h4 className="font-semibold text-[8px]">Observações:</h4>
+      <div>
+        <h4 className="font-bold text-[8px]">Observações:</h4>
         <p className="text-[7px]">* VRP - Valor de Referência Padrão.</p>
-        <div className="min-h-[15px]"></div>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3"></div>
       </div>
 
       {/* Footer */}

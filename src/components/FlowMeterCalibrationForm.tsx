@@ -1,5 +1,12 @@
 export function FlowMeterCalibrationForm() {
-  const measurementRows = Array(3).fill(null);
+  const measurementRows = Array(8).fill(null);
+
+  const padroes = [
+    "IP 60 - Medidor de Vazão Ultrassônico",
+    "IP 151 - Medidor de Vazão Ultrassônico",
+    "IP 165 - Medidor de Vazão Vórtex",
+    "IP 318 - Medidor de Vazão Eletromagnético",
+  ];
 
   return (
     <div className="print-form p-2 max-w-[210mm] mx-auto text-[9px] leading-tight">
@@ -153,7 +160,7 @@ export function FlowMeterCalibrationForm() {
           </div>
         </div>
         <div className="border border-black p-2">
-          <h4 className="font-bold mb-1 text-[9px]">Dados do Fluído</h4>
+          <h4 className="font-bold mb-1 text-[9px]">Dados do Fluido</h4>
           <div className="space-y-1">
             <div className="flex gap-2">
               <span className="font-semibold">Densidade Início:</span>
@@ -226,56 +233,6 @@ export function FlowMeterCalibrationForm() {
                 <td></td>
               </tr>
             ))}
-            <tr>
-              <td>4</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
         <div className="mt-2 flex">
@@ -285,31 +242,34 @@ export function FlowMeterCalibrationForm() {
       </div>
 
       {/* Método de Calibração */}
-      <div className="border border-black p-2 mb-2">
-        <div className="mb-1">
-          <span className="font-semibold">Método de Calibração: </span>
-          <span>Calibração por comparação direta conforme procedimento técnico PTVA 01.</span>
-        </div>
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px]">Método de Calibração:</h4>
+        <p className="text-[8px]">Calibração por comparação direta conforme procedimento técnico PTVA 01.</p>
       </div>
 
       {/* Padrões Utilizados */}
-      <div className="border border-black p-2 mb-2">
-        <h4 className="font-semibold mb-1">Padrões Utilizados:</h4>
-        <div className="grid grid-cols-2 gap-1 text-[8px]">
-          <span>• IP 60 - Medidor de Vazão Ultrassônico</span>
-          <span>• IP 151 - Medidor de Vazão Ultrassônico</span>
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+        <div className="grid grid-cols-4 gap-x-2 gap-y-0.5 text-[8px]">
+          {padroes.map((padrao) => (
+            <label key={padrao} className="flex items-center gap-0.5">
+              <span className="w-2.5 h-2.5 border border-black inline-block"></span>
+              <span>{padrao}</span>
+            </label>
+          ))}
         </div>
       </div>
 
       {/* Observações */}
-      <div className="border border-black p-2">
-        <h4 className="font-semibold mb-1">Observações:</h4>
-        <div className="min-h-[20px]"></div>
+      <div>
+        <h4 className="font-bold text-[8px]">Observações:</h4>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3"></div>
       </div>
 
       {/* Footer */}
       <div className="text-center mt-2 text-[8px] text-muted-foreground">
-      Página 1 de 1
+        Página 1 de 1
       </div>
     </div>
   );
