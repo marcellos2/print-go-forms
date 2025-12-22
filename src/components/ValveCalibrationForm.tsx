@@ -147,10 +147,6 @@ export function ValveCalibrationForm() {
               <span className="font-semibold w-48">Pressão de Abertura Após Ajuste:</span>
               <span className="flex-1 border-b border-black"></span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-48">Pressão de Fechamento Após Ajuste:</span>
-              <span className="flex-1 border-b border-black"></span>
-            </div>
           </div>
         </div>
       </div>

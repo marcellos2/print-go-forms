@@ -224,12 +224,12 @@ export function ManometerCalibrationForm() {
       </div>
 
       {/* Observações */}
-      <div className="border border-black p-2">
+      <div className="border border-black p-1">
         <h4 className="font-semibold mb-1">Observações:</h4>
-        <div className="min-h-[30px] border-b border-black"></div>
+        <div className="min-h-[40px]"></div>
         <div className="mt-2">
-          <span className="font-semibold">Mês Preferencial definido pelo Cliente: </span>
-          <span className="border-b border-black inline-block w-24"></span>
+  
+
         </div>
       </div>
 
