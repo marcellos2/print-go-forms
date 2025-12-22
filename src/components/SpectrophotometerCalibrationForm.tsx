@@ -1,21 +1,28 @@
 export function SpectrophotometerCalibrationForm() {
   const leftRows = [
-    { wave: "380nm", std1: "0.717", filter1: "F2-1135", std2: "0.302", filter2: "F3-1135" },
-    { wave: "420nm", std1: "0.699", filter1: "F3-1135", std2: "1.067", filter2: "F4-1135" },
-    { wave: "440nm", std1: "0.672", filter1: "F3-1135", std2: "1.023", filter2: "F4-1135" },
-    { wave: "520nm", std1: "0.587", filter1: "F3-1135", std2: "0.905", filter2: "F4-1135" },
-    { wave: "560nm", std1: "0.562", filter1: "F3-1135", std2: "0.859", filter2: "F4-1135" },
-    { wave: "590nm", std1: "0.612", filter1: "F3-1135", std2: "0.928", filter2: "F4-1135" },
-    { wave: "610nm", std1: "0.617", filter1: "F3-1135", std2: "", filter2: "" },
+    { wave: "380nm", std1: "0,717", filter1: "F2-1135", std2: "0,302", filter2: "F3-1135" },
+    { wave: "420nm", std1: "0,699", filter1: "F3-1135", std2: "1,067", filter2: "F4-1135" },
+    { wave: "440nm", std1: "0,672", filter1: "F3-1135", std2: "1,023", filter2: "F4-1135" },
+    { wave: "520nm", std1: "0,587", filter1: "F3-1135", std2: "0,905", filter2: "F4-1135" },
+    { wave: "560nm", std1: "0,562", filter1: "F3-1135", std2: "0,859", filter2: "F4-1135" },
+    { wave: "590nm", std1: "0,612", filter1: "F3-1135", std2: "0,928", filter2: "F4-1135" },
+    { wave: "610nm", std1: "0,617", filter1: "F3-1135", std2: "", filter2: "" },
   ];
 
   const rightRows = [
-    { wave: "635nm", std1: "0.602", filter1: "F3-1135", std2: "0.825", filter2: "F3-1135" },
-    { wave: "690nm", std1: "0.602", filter1: "F3-1135", std2: "0.825", filter2: "F4-1135" },
-    { wave: "720nm", std1: "0.559", filter1: "F3-1135", std2: "0.770", filter2: "F4-1135" },
-    { wave: "800nm", std1: "0.769", filter1: "F3-1135", std2: "0.894", filter2: "F4-1135" },
-    { wave: "850nm", std1: "0.858", filter1: "F3-1135", std2: "0.971", filter2: "F4-1135" },
-    { wave: "900nm", std1: "0.926", filter1: "F3-1135", std2: "1.032", filter2: "F4-1135" },
+    { wave: "635nm", std1: "0,602", filter1: "F3-1135", std2: "0,825", filter2: "F3-1135" },
+    { wave: "690nm", std1: "0,602", filter1: "F3-1135", std2: "0,825", filter2: "F4-1135" },
+    { wave: "720nm", std1: "0,559", filter1: "F3-1135", std2: "0,770", filter2: "F4-1135" },
+    { wave: "800nm", std1: "0,769", filter1: "F3-1135", std2: "0,894", filter2: "F4-1135" },
+    { wave: "850nm", std1: "0,858", filter1: "F3-1135", std2: "0,971", filter2: "F4-1135" },
+    { wave: "900nm", std1: "0,926", filter1: "F3-1135", std2: "1,032", filter2: "F4-1135" },
+  ];
+
+  const padroes = [
+    "PC 05 - Filtro de Vidro Neutro",
+    "F2-1135 - Filtro Padrão",
+    "F3-1135 - Filtro Padrão",
+    "F4-1135 - Filtro Padrão",
   ];
 
   return (
@@ -189,21 +196,35 @@ export function SpectrophotometerCalibrationForm() {
         </div>
       </div>
 
-      {/* Método e Padrões */}
-      <div className="border border-black p-1 mb-2">
-        <p className="text-[8px]"><strong>Método de Calibração:</strong> Calibração por comparação indireta conforme procedimento interno.</p>
-        <p className="text-[8px] mt-1"><strong>Padrões Utilizados:</strong> PC 05</p>
+      {/* Método de Calibração */}
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px]">Método de Calibração:</h4>
+        <p className="text-[8px]">Calibração por comparação indireta conforme procedimento interno.</p>
+      </div>
+
+      {/* Padrões Utilizados */}
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+        <div className="grid grid-cols-4 gap-x-2 gap-y-0.5 text-[8px]">
+          {padroes.map((padrao) => (
+            <label key={padrao} className="flex items-center gap-0.5">
+              <span className="w-2.5 h-2.5 border border-black inline-block"></span>
+              <span>{padrao}</span>
+            </label>
+          ))}
+        </div>
       </div>
 
       {/* Observações */}
-      <div className="border border-black p-1">
-        <h4 className="font-semibold text-[8px]">Observações:</h4>
-        <div className="min-h-[20px]"></div>
+      <div>
+        <h4 className="font-bold text-[8px]">Observações:</h4>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3"></div>
       </div>
 
       {/* Footer */}
       <div className="text-center mt-1 text-[8px] text-muted-foreground">
-        FRCAL XXX/REV.00 — Página 1 de 1
+        Página 1 de 1
       </div>
     </div>
   );

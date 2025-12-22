@@ -1,6 +1,13 @@
 export function FlowMeterBenchCalibrationForm() {
   const testRows = Array(6).fill(null);
 
+  const padroes = [
+    "IP 165 - Medidor de Vazão Vórtex (3,5 a 35 m³/h)",
+    "IP 318 - Medidor de Vazão Eletromagnético (0,5 a 40 m³/h)",
+    "IP 319 - Medidor de Vazão Mássico (100 a 6500 kg/h)",
+    "IP 320 - Medidor de Vazão Mássico (1000 a 18000 kg/h)",
+  ];
+
   return (
     <div className="print-form p-2 max-w-[210mm] mx-auto text-[9px] leading-tight">
       {/* Header */}
@@ -102,7 +109,7 @@ export function FlowMeterBenchCalibrationForm() {
               <span className="w-12 border-b border-black"></span>
             </div>
           </div>
-          <p className="text-[7px] mt-1">*Realizar correção caso seja identificado diferença significante.</p>
+          <p className="text-[7px] mt-1">*Realizar correção caso seja identificada diferença significante.</p>
         </div>
         <div className="border border-black p-2">
           <div className="flex gap-2 mb-1">
@@ -168,12 +175,12 @@ export function FlowMeterBenchCalibrationForm() {
           <h4 className="font-bold mb-1 text-[9px]">Dados Complementares</h4>
           <div className="space-y-1">
             <div className="flex gap-2">
-              <span className="font-semibold">Densidade do Fluído:</span>
+              <span className="font-semibold">Densidade do Fluido:</span>
               <span className="w-12 border-b border-black"></span>
               <span>g/cm³</span>
             </div>
             <div className="flex gap-2">
-              <span className="font-semibold">Temperatura do Fluído:</span>
+              <span className="font-semibold">Temperatura do Fluido:</span>
               <span className="w-12 border-b border-black"></span>
               <span>°C</span>
             </div>
@@ -268,34 +275,35 @@ export function FlowMeterBenchCalibrationForm() {
       </div>
 
       {/* Método de Calibração */}
-      <div className="border border-black p-2 mb-2">
-        <div className="mb-1">
-          <span className="font-semibold">Método de Calibração: </span>
-          <span>Calibração por comparação direta conforme procedimento técnico PTVA 01.</span>
-        </div>
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px]">Método de Calibração:</h4>
+        <p className="text-[8px]">Calibração por comparação direta conforme procedimento técnico PTVA 01.</p>
       </div>
 
       {/* Padrões Utilizados */}
-      <div className="border border-black p-2 mb-2">
-        <h4 className="font-semibold mb-1">Padrões Utilizados:</h4>
-        <div className="grid grid-cols-2 gap-1 text-[8px]">
-          <span>• IP 165 - Medidor de Vazão Vórtex (3,5 a 35 m³/h)</span>
-          <span>• IP 318 - Medidor de Vazão Eletromagnético (0,5 a 40 m³/h)</span>
-          <span>• IP 319 - Medidor de Vazão Mássico (100 a 6500 kg/h)</span>
-          <span>• IP 320 - Medidor de Vazão Mássico (1000 a 18000 kg/h)</span>
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+        <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[8px]">
+          {padroes.map((padrao) => (
+            <label key={padrao} className="flex items-center gap-0.5">
+              <span className="w-2.5 h-2.5 border border-black inline-block"></span>
+              <span>{padrao}</span>
+            </label>
+          ))}
         </div>
       </div>
 
       {/* Observações */}
-      <div className="border border-black p-2">
-        <h4 className="font-semibold mb-1">Observações:</h4>
+      <div>
+        <h4 className="font-bold text-[8px]">Observações:</h4>
         <p className="text-[7px]">* Tipos convencionais: Eletromagnético, Mássico, Termal, Turbina, Ultrassônico e Diferencial de Pressão.</p>
-        <div className="min-h-[15px]"></div>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3"></div>
       </div>
 
       {/* Footer */}
       <div className="text-center mt-2 text-[8px] text-muted-foreground">
-   Página 1 de 1
+        Página 1 de 1
       </div>
     </div>
   );

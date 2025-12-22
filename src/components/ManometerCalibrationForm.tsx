@@ -1,6 +1,14 @@
 export function ManometerCalibrationForm() {
   const measurementRows = Array(11).fill(null);
 
+  const padroes = [
+    "IP 24 - Manômetro Padrão",
+    "IP 37 - Transdutor de Pressão",
+    "IP 97 - Multicalibrador",
+    "IP 51 - Calibrador de Pressão",
+    "IP 102 - Calibrador de Pressão",
+  ];
+
   return (
     <div className="print-form p-2 max-w-[210mm] mx-auto text-[9px] leading-tight">
       {/* Header */}
@@ -200,7 +208,7 @@ export function ManometerCalibrationForm() {
       </div>
 
       {/* Método e Modo de Calibração */}
-      <div className="border border-black p-2 mb-2">
+      <div className="mb-1">
         <div className="mb-1">
           <span className="font-semibold">Método de Calibração: </span>
           <span>Calibração conforme procedimento técnico PTPR 01.</span>
@@ -212,30 +220,29 @@ export function ManometerCalibrationForm() {
       </div>
 
       {/* Padrões Utilizados */}
-      <div className="border border-black p-2 mb-2">
-        <h4 className="font-semibold mb-1">Padrões Utilizados:</h4>
-        <div className="grid grid-cols-3 gap-1 text-[8px]">
-          <span>• IP 24 - Manômetro Padrão</span>
-          <span>• IP 37 - Transdutor de Pressão</span>
-          <span>• IP 97 - Multicalibrador</span>
-          <span>• IP 51 - Calibrador de Pressão</span>
-          <span>• IP 102 - Calibrador de Pressão</span>
+      <div className="mb-1">
+        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+        <div className="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[8px]">
+          {padroes.map((padrao) => (
+            <label key={padrao} className="flex items-center gap-0.5">
+              <span className="w-2.5 h-2.5 border border-black inline-block"></span>
+              <span>{padrao}</span>
+            </label>
+          ))}
         </div>
       </div>
 
       {/* Observações */}
-      <div className="border border-black p-1">
-        <h4 className="font-semibold mb-1">Observações:</h4>
-        <div className="min-h-[40px]"></div>
-        <div className="mt-2">
-  
-
-        </div>
+      <div>
+        <h4 className="font-bold text-[8px]">Observações:</h4>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3 mb-0.5"></div>
+        <div className="border-b border-black h-3"></div>
       </div>
 
       {/* Footer */}
       <div className="text-center mt-2 text-[8px] text-muted-foreground">
-     Página 1 de 1
+        Página 1 de 1
       </div>
     </div>
   );
