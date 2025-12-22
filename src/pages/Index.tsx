@@ -164,13 +164,9 @@ export default function Index() {
             {/* Sidebar Footer */}
             <div className="p-4 border-t border-neutral-200">
               {!sidebarCollapsed ? (
-                <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
+                <div className="p-3 bg-orange-50 rounded-lg ">
                   <div className="flex items-start gap-3 mb-2">
-                    <FileText className="w-4 h-4 text-orange-600 flex-shrink-0 mt-0.5" />
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-semibold text-orange-900 mb-1">Certificado INMETRO</p>
-                      <p className="text-xs text-orange-700">Sistema certificado e em conformidade</p>
-                    </div>
+
                   </div>
                 </div>
               ) : (
