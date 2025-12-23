@@ -9,7 +9,7 @@ export function LaminarFlowHoodCalibrationForm() {
         .form-table th,
         .form-table td {
           border: 1px solid black;
-          padding: 4px 4px;
+          padding: 3px 4px;
           text-align: center;
           vertical-align: middle;
           font-size: 8px;
@@ -47,31 +47,31 @@ export function LaminarFlowHoodCalibrationForm() {
       <div className="grid grid-cols-2 gap-6 mb-2 text-[8.5px]">
         {/* Coluna Esquerda */}
         <div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Fabricante:</span>
             <span className="border-b border-black inline-block w-[calc(100%-75px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Proprietário:</span>
             <span className="border-b border-black inline-block w-[calc(100%-80px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Instrumento:</span>
             <span className="border-b border-black inline-block w-[calc(100%-80px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Código:</span>
             <span className="border-b border-black inline-block w-[calc(100%-55px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Fabricante:</span>
             <span className="border-b border-black inline-block w-[calc(100%-75px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Modelo:</span>
             <span className="border-b border-black inline-block w-[calc(100%-55px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Tipo:</span>
             <span className="border-b border-black inline-block w-[calc(100%-40px)] ml-1"></span>
           </div>
@@ -79,23 +79,23 @@ export function LaminarFlowHoodCalibrationForm() {
 
         {/* Coluna Direita */}
         <div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Nº de Série:</span>
             <span className="border-b border-black inline-block w-[calc(100%-80px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Nº de Patrimônio:</span>
             <span className="border-b border-black inline-block w-[calc(100%-115px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Nº da OS:</span>
             <span className="border-b border-black inline-block w-[calc(100%-65px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Periodicidade:</span>
             <span className="border-b border-black inline-block w-[calc(100%-95px)] ml-1"></span>
           </div>
-          <div className="mb-0.5">
+          <div className="mb-1.5">
             <span className="font-semibold">Local de Utilização:</span>
             <span className="border-b border-black inline-block w-[calc(100%-125px)] ml-1"></span>
           </div>
@@ -108,19 +108,19 @@ export function LaminarFlowHoodCalibrationForm() {
         <div className="grid grid-cols-2 gap-6 text-[8.5px]">
           {/* Coluna Esquerda */}
           <div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Nº Certificado:</span>
               <span className="border-b border-black inline-block w-[calc(100%-100px)] ml-1"></span>
             </div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Data de Calibração:</span>
               <span className="border-b border-black inline-block w-[calc(100%-130px)] ml-1"></span>
             </div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Local da Calibração:</span>
               <span className="border-b border-black inline-block w-[calc(100%-135px)] ml-1"></span>
             </div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Técnico de Calibração:</span>
               <span className="border-b border-black inline-block w-[calc(100%-145px)] ml-1"></span>
             </div>
@@ -128,7 +128,7 @@ export function LaminarFlowHoodCalibrationForm() {
 
           {/* Coluna Direita */}
           <div>
-            <div className="mb-0.5 text-[8px]">
+            <div className="mb-1.5 text-[8px]">
               <span className="font-semibold">Temperatura:</span>
               <span className="ml-1">Mín.:</span>
               <span className="border-b border-black inline-block w-10 mx-1"></span>
@@ -137,7 +137,7 @@ export function LaminarFlowHoodCalibrationForm() {
               <span className="border-b border-black inline-block w-10 mx-1"></span>
               <span>°C</span>
             </div>
-            <div className="mb-0.5 text-[8px]">
+            <div className="mb-1.5 text-[8px]">
               <span className="font-semibold">Umidade:</span>
               <span className="ml-1">Mín.:</span>
               <span className="border-b border-black inline-block w-10 mx-1"></span>
@@ -146,7 +146,7 @@ export function LaminarFlowHoodCalibrationForm() {
               <span className="border-b border-black inline-block w-10 mx-1"></span>
               <span>%UR</span>
             </div>
-            <div className="mb-0.5 mt-1">
+            <div className="mb-1.5 mt-2">
               <span className="font-semibold">Técnico de Certificados:</span>
               <span className="border-b border-black inline-block w-[calc(100%-155px)] ml-1"></span>
             </div>
@@ -160,7 +160,7 @@ export function LaminarFlowHoodCalibrationForm() {
           {/* Coluna Esquerda */}
           <div>
             <div className="font-bold mb-1.5 text-[8.5px]">Inspeção Visual</div>
-            <div className="mb-0.5 flex items-center">
+            <div className="mb-1.5 flex items-center">
               <span className="font-semibold inline-block w-48">Funcionamento Geral:</span>
               <span className="text-[7.5px] whitespace-nowrap">
                 <span className="checkbox"></span>Boa
@@ -168,7 +168,7 @@ export function LaminarFlowHoodCalibrationForm() {
                 <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="mb-0.5 flex items-center">
+            <div className="mb-1.5 flex items-center">
               <span className="font-semibold inline-block w-48">Aspectos Físicos:</span>
               <span className="text-[7.5px] whitespace-nowrap">
                 <span className="checkbox"></span>Boa
@@ -176,7 +176,7 @@ export function LaminarFlowHoodCalibrationForm() {
                 <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="mb-0.5 flex items-center">
+            <div className="mb-1.5 flex items-center">
               <span className="font-semibold inline-block w-48">Exaustor:</span>
               <span className="text-[7.5px] whitespace-nowrap">
                 <span className="checkbox"></span>Boa
@@ -184,7 +184,7 @@ export function LaminarFlowHoodCalibrationForm() {
                 <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="mb-0.5 flex items-center">
+            <div className="mb-1.5 flex items-center">
               <span className="font-semibold inline-block w-48">Janela Frontal Móvel:</span>
               <span className="text-[7.5px] whitespace-nowrap">
                 <span className="checkbox"></span>Boa
@@ -192,7 +192,7 @@ export function LaminarFlowHoodCalibrationForm() {
                 <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="mb-0.5 flex items-center">
+            <div className="mb-1.5 flex items-center">
               <span className="font-semibold inline-block w-48">Sucção de Fumaça Externa:</span>
               <span className="text-[7.5px] whitespace-nowrap">
                 <span className="checkbox"></span>Boa
@@ -200,7 +200,7 @@ export function LaminarFlowHoodCalibrationForm() {
                 <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="mb-0.5 flex items-center">
+            <div className="mb-1.5 flex items-center">
               <span className="font-semibold inline-block w-48">Sucção de Fumaça Interno:</span>
               <span className="text-[7.5px] whitespace-nowrap">
                 <span className="checkbox"></span>Boa
@@ -213,17 +213,17 @@ export function LaminarFlowHoodCalibrationForm() {
           {/* Coluna Direita */}
           <div>
             <div className="font-bold mb-1.5 text-[8.5px]">Dados da Janela totalmente fechada</div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Área de Abertura (l x h):</span>
               <span className="border-b border-black inline-block w-16 mx-1"></span>
               <span>m³</span>
             </div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Altura (h):</span>
               <span className="border-b border-black inline-block w-28 mx-1"></span>
               <span>m</span>
             </div>
-            <div className="mb-0.5">
+            <div className="mb-1.5">
               <span className="font-semibold">Largura (l):</span>
               <span className="border-b border-black inline-block w-28 mx-1"></span>
               <span>m</span>
@@ -257,7 +257,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 3: 100% */}
             <tr>
               <td>100%</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td className="italic">Centro</td>
@@ -269,7 +269,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 4: 50% */}
             <tr>
               <td>50%</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td className="italic">Direita</td>
@@ -281,7 +281,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 5: 25% + Título Luminância Ultravioleta */}
             <tr>
               <td>25%</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <th colSpan="4" className="font-bold text-[8.5px]">Luminância Ultravioleta [lux]</th>
@@ -291,7 +291,7 @@ export function LaminarFlowHoodCalibrationForm() {
             <tr>
               <th colSpan="4" className="font-bold text-[8.5px]">Nível Sonoro [dB]</th>
               <td className="italic">Esquerda</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
             </tr>
@@ -303,7 +303,7 @@ export function LaminarFlowHoodCalibrationForm() {
               <th>Mín.</th>
               <th>Méd.</th>
               <td className="italic">Centro</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
             </tr>
@@ -311,11 +311,11 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 8: Exaustão Ligada */}
             <tr>
               <td className="text-left-cell italic text-[7.5px]">Exaustão Ligada</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td className="italic">Direita</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
             </tr>
@@ -323,7 +323,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 9: Exaustão Desligada */}
             <tr>
               <td className="text-left-cell italic text-[7.5px]">Exaustão Desligada</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td colSpan="4" className="gray-area"></td>
@@ -345,7 +345,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 2: Esquerda */}
             <tr>
               <td className="text-left-cell italic w-20">Esquerda</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td colSpan="4" className="gray-area"></td>
@@ -354,7 +354,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 3: Centro */}
             <tr>
               <td className="text-left-cell italic">Centro</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td colSpan="4" className="gray-area"></td>
@@ -363,7 +363,7 @@ export function LaminarFlowHoodCalibrationForm() {
             {/* Linha 4: Direita */}
             <tr>
               <td className="text-left-cell italic">Direita</td>
-              <td className="h-7"></td>
+              <td className="h-6"></td>
               <td></td>
               <td></td>
               <td colSpan="4" className="gray-area"></td>
