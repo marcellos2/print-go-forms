@@ -9,6 +9,7 @@ import { PHMeterCalibrationForm } from "./PHMeterCalibrationForm";
 import { ConductivityMeterCalibrationForm } from "./ConductivityMeterCalibrationForm";
 import { SpectrophotometerCalibrationForm } from "./SpectrophotometerCalibrationForm";
 import { OximeterCalibrationForm } from "./OximeterCalibrationForm";
+import { LaminarFlowHoodCalibrationForm } from "./LaminarFlowHoodCalibrationForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
 import type { EquipmentType } from "@/config/equipments";
@@ -31,6 +32,7 @@ const formComponents: Record<EquipmentType, React.ComponentType> = {
   "conductivity-meter": ConductivityMeterCalibrationForm,
   "spectrophotometer": SpectrophotometerCalibrationForm,
   "oximeter": OximeterCalibrationForm,
+  "laminar-flow-hood": LaminarFlowHoodCalibrationForm,
 };
 
 export function PrintPreview({ selections, onBack }: PrintPreviewProps) {

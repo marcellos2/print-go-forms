@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Printer, FileText, Search, Grid3x3, List, Package, Menu, X, Home, Settings, HelpCircle, LogOut, ChevronRight, Filter } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
-import { equipments, categories, getEquipmentsByCategory } from "@/config/equipments";
+import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory } from "@/config/equipments";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -40,7 +40,7 @@ export default function Index() {
     ? categories.filter(c => c.id === selectedCategory)
     : categories;
 
-  const getFilteredEquipments = (categoryId: string) => {
+  const getFilteredEquipments = (categoryId: EquipmentCategory) => {
     const categoryEquipments = getEquipmentsByCategory(categoryId);
     if (!searchTerm) return categoryEquipments;
     return categoryEquipments.filter(eq => 
