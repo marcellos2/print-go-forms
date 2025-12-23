@@ -406,22 +406,6 @@ export function PHMeterCalibrationForm() {
     Página 1 de 1
       </div>
 
-      <style jsx>{`
-        .print-table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        .print-table th,
-        .print-table td {
-          border: 1px solid black;
-          padding: 1px 3px;
-          text-align: center;
-        }
-        .print-table th {
-          font-weight: 600;
-          background-color: #f9fafb;
-        }
-      `}</style>
     </div>
   );
 }

@@ -10,7 +10,8 @@ export type EquipmentType =
   | "ph-meter"
   | "conductivity-meter"
   | "spectrophotometer"
-  | "oximeter";
+  | "oximeter"
+  | "laminar-flow-hood";
 
 export type EquipmentCategory = "mecanico" | "eletrico" | "quimico" | "vazao";
 
@@ -112,6 +113,15 @@ export const equipments: Equipment[] = [
     description: "Registro de calibração de vazão em bancada",
     icon: Workflow,
     category: "vazao",
+  },
+  
+  // Outros
+  {
+    id: "laminar-flow-hood",
+    title: "Capela de Fluxo Laminar",
+    description: "Registro de calibração de capelas de exaustão e/ou fluxo laminar",
+    icon: Activity,
+    category: "quimico",
   },
 ];
 
