@@ -26,7 +26,7 @@ export function MultimeterCalibrationForm() {
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Instrumento:</span>
-            <span className="flex-1 border-b border-black">Multímetro</span>
+            <span className="flex-1 border-b border-black"></span>
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Código:</span>
@@ -291,7 +291,7 @@ export function MultimeterCalibrationForm() {
       </div>
 
       {/* Observações */}
-  <div className="border border-black p-2 mb-2">
+       <div className="border border-black p-2 mb-2">
         <div className="font-bold mb-1.5 text-[8.5px]">Observações:</div>
         <div className="min-h-[60px]">
           {/* Espaço para observações */}
