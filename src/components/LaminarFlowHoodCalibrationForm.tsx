@@ -1,416 +1,425 @@
 export function LaminarFlowHoodCalibrationForm() {
-  const airFlowRows = ['100%', '50%', '25%'];
-  const lightRows = [{ pos: '' }];
-  const soundRows = ['Exaustão Ligada', 'Exaustão Desligada'];
-  const particleRows = [{ pos: '' }];
-
   return (
-    <div className="print-form p-2 max-w-[210mm] mx-auto text-[9px] leading-tight">
-      {/* Header */}
-      <h1 className="text-center font-bold text-xs mb-2 uppercase tracking-wide">
-        Registro de Calibração Capela de Exaustão e/ou Fluxo Laminar
-      </h1>
+    <div className="p-4 max-w-[210mm] mx-auto text-[9px] leading-tight bg-white">
+      <style>{`
+        .form-table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        .form-table th,
+        .form-table td {
+          border: 1px solid black;
+          padding: 4px 4px;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 8px;
+        }
+        .form-table th {
+          font-weight: 600;
+          background-color: #f5f5f5;
+        }
+        .text-left-cell {
+          text-align: left !important;
+          padding-left: 6px !important;
+        }
+        .checkbox {
+          display: inline-block;
+          width: 11px;
+          height: 11px;
+          border: 1px solid black;
+          margin-right: 3px;
+          vertical-align: middle;
+        }
+        .gray-area {
+          background-color: #d3d3d3;
+        }
+        @media print {
+          body { margin: 0; padding: 0; }
+        }
+      `}</style>
 
-      {/* Main Info Grid */}
-      <div className="grid grid-cols-2 gap-x-3 mb-2">
-        {/* Left Column */}
-        <div className="space-y-1">
-          <div className="flex">
-            <span className="font-semibold w-28">Fabricante:</span>
-            <span className="flex-1 border-b border-black"></span>
+      {/* TÍTULO */}
+      <div className="text-center font-bold text-[10px] mb-3 uppercase tracking-wide">
+        REGISTRO DE CALIBRAÇÃO CAPELA DE EXAUSTÃO E/OU FLUXO LAMINAR
+      </div>
+
+      {/* SEÇÃO 1: INFORMAÇÕES PRINCIPAIS */}
+      <div className="grid grid-cols-2 gap-6 mb-2 text-[8.5px]">
+        {/* Coluna Esquerda */}
+        <div>
+          <div className="mb-0.5">
+            <span className="font-semibold">Fabricante:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-75px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-28">Proprietário:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Proprietário:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-80px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-28">Instrumento:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Instrumento:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-80px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-28">Código:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Código:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-55px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-28">Fabricante:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Fabricante:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-75px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-28">Modelo:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Modelo:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-55px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-28">Tipo:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Tipo:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-40px)] ml-1"></span>
           </div>
         </div>
 
-        {/* Right Column */}
-        <div className="space-y-1">
-          <div className="flex">
-            <span className="font-semibold w-32">Nº de Série:</span>
-            <span className="flex-1 border-b border-black"></span>
+        {/* Coluna Direita */}
+        <div>
+          <div className="mb-0.5">
+            <span className="font-semibold">Nº de Série:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-80px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32">Nº de Patrimônio:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Nº de Patrimônio:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-115px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32">Nº da OS:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Nº da OS:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-65px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32">Periodicidade:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Periodicidade:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-95px)] ml-1"></span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32">Local de Utilização:</span>
-            <span className="flex-1 border-b border-black"></span>
+          <div className="mb-0.5">
+            <span className="font-semibold">Local de Utilização:</span>
+            <span className="border-b border-black inline-block w-[calc(100%-125px)] ml-1"></span>
           </div>
         </div>
       </div>
 
-      {/* Parâmetros da Calibração */}
+      {/* SEÇÃO 2: PARÂMETROS DA CALIBRAÇÃO */}
       <div className="border border-black p-2 mb-2">
-        <h3 className="font-bold text-center mb-2 text-[9px]">Parâmetros da Calibração</h3>
-        <div className="grid grid-cols-2 gap-x-3">
-          <div className="space-y-1">
-            <div className="flex">
-              <span className="font-semibold w-32">Nº Certificado:</span>
-              <span className="flex-1 border-b border-black"></span>
+        <div className="text-center font-bold mb-1.5 text-[8.5px]">Parâmetros da Calibração</div>
+        <div className="grid grid-cols-2 gap-6 text-[8.5px]">
+          {/* Coluna Esquerda */}
+          <div>
+            <div className="mb-0.5">
+              <span className="font-semibold">Nº Certificado:</span>
+              <span className="border-b border-black inline-block w-[calc(100%-100px)] ml-1"></span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-32">Data de Calibração:</span>
-              <span className="flex-1 border-b border-black"></span>
+            <div className="mb-0.5">
+              <span className="font-semibold">Data de Calibração:</span>
+              <span className="border-b border-black inline-block w-[calc(100%-130px)] ml-1"></span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-32">Local da Calibração:</span>
-              <span className="flex-1 border-b border-black"></span>
+            <div className="mb-0.5">
+              <span className="font-semibold">Local da Calibração:</span>
+              <span className="border-b border-black inline-block w-[calc(100%-135px)] ml-1"></span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-32">Técnico de Calibração:</span>
-              <span className="flex-1 border-b border-black"></span>
+            <div className="mb-0.5">
+              <span className="font-semibold">Técnico de Calibração:</span>
+              <span className="border-b border-black inline-block w-[calc(100%-145px)] ml-1"></span>
             </div>
           </div>
-          <div className="space-y-1">
-            <div className="flex gap-2">
+
+          {/* Coluna Direita */}
+          <div>
+            <div className="mb-0.5 text-[8px]">
               <span className="font-semibold">Temperatura:</span>
-              <span>Mín.:</span>
-              <span className="w-10 border-b border-black"></span>
+              <span className="ml-1">Mín.:</span>
+              <span className="border-b border-black inline-block w-10 mx-1"></span>
               <span>°C</span>
-              <span>Máx.:</span>
-              <span className="w-10 border-b border-black"></span>
+              <span className="ml-1">Máx.:</span>
+              <span className="border-b border-black inline-block w-10 mx-1"></span>
               <span>°C</span>
             </div>
-            <div className="flex gap-2">
+            <div className="mb-0.5 text-[8px]">
               <span className="font-semibold">Umidade:</span>
-              <span>Mín.:</span>
-              <span className="w-10 border-b border-black"></span>
+              <span className="ml-1">Mín.:</span>
+              <span className="border-b border-black inline-block w-10 mx-1"></span>
               <span>%UR</span>
-              <span>Máx.:</span>
-              <span className="w-10 border-b border-black"></span>
+              <span className="ml-1">Máx.:</span>
+              <span className="border-b border-black inline-block w-10 mx-1"></span>
               <span>%UR</span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-36">Técnico de Certificados:</span>
-              <span className="flex-1 border-b border-black"></span>
+            <div className="mb-0.5 mt-1">
+              <span className="font-semibold">Técnico de Certificados:</span>
+              <span className="border-b border-black inline-block w-[calc(100%-155px)] ml-1"></span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Inspeção Visual */}
+      {/* SEÇÃO 3: INSPEÇÃO VISUAL */}
       <div className="border border-black p-2 mb-2">
-        <h3 className="font-bold text-center mb-2 text-[9px]">Inspeção Visual</h3>
-        <div className="grid grid-cols-2 gap-x-3">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36">Funcionamento Geral:</span>
-              <span className="flex gap-3 text-[8px]">
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Boa
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Regular
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Ruim
-                </label>
+        <div className="grid grid-cols-2 gap-6 text-[8.5px]">
+          {/* Coluna Esquerda */}
+          <div>
+            <div className="font-bold mb-1.5 text-[8.5px]">Inspeção Visual</div>
+            <div className="mb-0.5 flex items-center">
+              <span className="font-semibold inline-block w-48">Funcionamento Geral:</span>
+              <span className="text-[7.5px] whitespace-nowrap">
+                <span className="checkbox"></span>Boa
+                <span className="checkbox ml-1.5"></span>Regular
+                <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36">Aspectos Físicos:</span>
-              <span className="flex gap-3 text-[8px]">
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Boa
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Regular
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Ruim
-                </label>
+            <div className="mb-0.5 flex items-center">
+              <span className="font-semibold inline-block w-48">Aspectos Físicos:</span>
+              <span className="text-[7.5px] whitespace-nowrap">
+                <span className="checkbox"></span>Boa
+                <span className="checkbox ml-1.5"></span>Regular
+                <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36">Exaustor:</span>
-              <span className="flex gap-3 text-[8px]">
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Boa
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Regular
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Ruim
-                </label>
+            <div className="mb-0.5 flex items-center">
+              <span className="font-semibold inline-block w-48">Exaustor:</span>
+              <span className="text-[7.5px] whitespace-nowrap">
+                <span className="checkbox"></span>Boa
+                <span className="checkbox ml-1.5"></span>Regular
+                <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36">Janela Frontal Móvel:</span>
-              <span className="flex gap-3 text-[8px]">
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Boa
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Regular
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Ruim
-                </label>
+            <div className="mb-0.5 flex items-center">
+              <span className="font-semibold inline-block w-48">Janela Frontal Móvel:</span>
+              <span className="text-[7.5px] whitespace-nowrap">
+                <span className="checkbox"></span>Boa
+                <span className="checkbox ml-1.5"></span>Regular
+                <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36">Sucção de Fumaça Externa:</span>
-              <span className="flex gap-3 text-[8px]">
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Boa
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Regular
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Ruim
-                </label>
+            <div className="mb-0.5 flex items-center">
+              <span className="font-semibold inline-block w-48">Sucção de Fumaça Externa:</span>
+              <span className="text-[7.5px] whitespace-nowrap">
+                <span className="checkbox"></span>Boa
+                <span className="checkbox ml-1.5"></span>Regular
+                <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36">Sucção de Fumaça Interna:</span>
-              <span className="flex gap-3 text-[8px]">
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Boa
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Regular
-                </label>
-                <label className="flex items-center gap-1">
-                  <span className="w-3 h-3 border border-black inline-block"></span> Ruim
-                </label>
+            <div className="mb-0.5 flex items-center">
+              <span className="font-semibold inline-block w-48">Sucção de Fumaça Interno:</span>
+              <span className="text-[7.5px] whitespace-nowrap">
+                <span className="checkbox"></span>Boa
+                <span className="checkbox ml-1.5"></span>Regular
+                <span className="checkbox ml-1.5"></span>Ruim
               </span>
             </div>
           </div>
-          <div className="space-y-1">
-            <div className="flex">
-              <span className="font-semibold w-36">Área de Abertura (l x h):</span>
-              <span className="flex-1 border-b border-black"></span>
-              <span className="ml-1">m³</span>
+
+          {/* Coluna Direita */}
+          <div>
+            <div className="font-bold mb-1.5 text-[8.5px]">Dados da Janela totalmente fechada</div>
+            <div className="mb-0.5">
+              <span className="font-semibold">Área de Abertura (l x h):</span>
+              <span className="border-b border-black inline-block w-16 mx-1"></span>
+              <span>m³</span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-36">Altura (h):</span>
-              <span className="flex-1 border-b border-black"></span>
-              <span className="ml-1">m</span>
+            <div className="mb-0.5">
+              <span className="font-semibold">Altura (h):</span>
+              <span className="border-b border-black inline-block w-28 mx-1"></span>
+              <span>m</span>
             </div>
-            <div className="flex">
-              <span className="font-semibold w-36">Largura (l):</span>
-              <span className="flex-1 border-b border-black"></span>
-              <span className="ml-1">m</span>
+            <div className="mb-0.5">
+              <span className="font-semibold">Largura (l):</span>
+              <span className="border-b border-black inline-block w-28 mx-1"></span>
+              <span>m</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Medições Grid */}
-      <div className="grid grid-cols-2 gap-2 mb-2">
-        {/* Velocidade do Fluxo do Ar */}
-        <div className="border border-black p-2">
-          <h4 className="font-bold text-center mb-1 text-[9px]">Velocidade do Fluxo do Ar [m/s]</h4>
-          <table className="print-table text-[8px]">
-            <thead>
-              <tr>
-                <th>Posição</th>
-                <th>V Máx.</th>
-                <th>V Mín.</th>
-                <th>V Méd.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {airFlowRows.map((pos) => (
-                <tr key={pos}>
-                  <td className="text-center">{pos}</td>
-                  <td className="h-4"></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Luminância Fluorescente */}
-        <div className="border border-black p-2">
-          <h4 className="font-bold text-center mb-1 text-[9px]">Luminância Fluorescente [lux]</h4>
-          <table className="print-table text-[8px]">
-            <thead>
-              <tr>
-                <th>Posição</th>
-                <th>Esquerda</th>
-                <th>Centro</th>
-                <th>Direita</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lightRows.map((_, idx) => (
-                <tr key={idx}>
-                  <td className="h-4"></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2 mb-2">
-        {/* Luminância Ultravioleta */}
-        <div className="border border-black p-2">
-          <h4 className="font-bold text-center mb-1 text-[9px]">Luminância Ultravioleta [lux]</h4>
-          <table className="print-table text-[8px]">
-            <thead>
-              <tr>
-                <th>Posição</th>
-                <th>Esquerda</th>
-                <th>Centro</th>
-                <th>Direita</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lightRows.map((_, idx) => (
-                <tr key={idx}>
-                  <td className="h-4"></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Nível Sonoro */}
-        <div className="border border-black p-2">
-          <h4 className="font-bold text-center mb-1 text-[9px]">Nível Sonoro [dB]</h4>
-          <table className="print-table text-[8px]">
-            <thead>
-              <tr>
-                <th>Posição</th>
-                <th>Máx.</th>
-                <th>Mín.</th>
-                <th>Méd.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {soundRows.map((pos) => (
-                <tr key={pos}>
-                  <td className="text-center text-[7px]">{pos}</td>
-                  <td className="h-4"></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Contagem Eletrônica de Partículas */}
-      <div className="border border-black p-2 mb-2">
-        <h4 className="font-bold text-center mb-1 text-[9px]">Contagem Eletrônica de Partículas</h4>
-        <table className="print-table text-[8px]">
-          <thead>
+      {/* TABELA PRINCIPAL UNIFICADA */}
+      <div className="mb-2">
+        <table className="form-table">
+          <tbody>
+            {/* Linha 1: Títulos */}
+            <tr>
+              <th colSpan="4" className="font-bold text-[8.5px]">Velocidade do Fluxo do Ar [m/s]</th>
+              <th colSpan="4" className="font-bold text-[8.5px]">Luminância Fluorescente [lux]</th>
+            </tr>
+            
+            {/* Linha 2: Headers */}
+            <tr>
+              <th className="w-16">Posição</th>
+              <th className="w-16">V Máx.</th>
+              <th className="w-16">V Mín.</th>
+              <th className="w-16">V Méd.</th>
+              <th className="w-24 italic">Esquerda</th>
+              <th className="w-24"></th>
+              <th className="w-24"></th>
+              <th className="w-24"></th>
+            </tr>
+            
+            {/* Linha 3: 100% */}
+            <tr>
+              <td>100%</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td className="italic">Centro</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            
+            {/* Linha 4: 50% */}
+            <tr>
+              <td>50%</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td className="italic">Direita</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            
+            {/* Linha 5: 25% + Título Luminância Ultravioleta */}
+            <tr>
+              <td>25%</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <th colSpan="4" className="font-bold text-[8.5px]">Luminância Ultravioleta [lux]</th>
+            </tr>
+            
+            {/* Linha 6: Título Nível Sonoro */}
+            <tr>
+              <th colSpan="4" className="font-bold text-[8.5px]">Nível Sonoro [dB]</th>
+              <td className="italic">Esquerda</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+            </tr>
+            
+            {/* Linha 7: Headers Nível Sonoro */}
             <tr>
               <th>Posição</th>
-              <th>Esquerda</th>
-              <th>Centro</th>
-              <th>Direita</th>
+              <th>Máx.</th>
+              <th>Mín.</th>
+              <th>Méd.</th>
+              <td className="italic">Centro</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
             </tr>
-          </thead>
-          <tbody>
-            {particleRows.map((_, idx) => (
-              <tr key={idx}>
-                <td className="h-4"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            ))}
+            
+            {/* Linha 8: Exaustão Ligada */}
+            <tr>
+              <td className="text-left-cell italic text-[7.5px]">Exaustão Ligada</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td className="italic">Direita</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+            </tr>
+            
+            {/* Linha 9: Exaustão Desligada */}
+            <tr>
+              <td className="text-left-cell italic text-[7.5px]">Exaustão Desligada</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td colSpan="4" className="gray-area"></td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      {/* Modo da Calibração e Método */}
-      <div className="grid grid-cols-2 gap-2 mb-2">
+      {/* CONTAGEM ELETRÔNICA DE PARTÍCULAS */}
+      <div className="mb-2">
+        <table className="form-table">
+          <tbody>
+            {/* Linha 1: Título */}
+            <tr>
+              <th colSpan="4" className="font-bold text-[8.5px]">Contagem Eletrônica de Partículas</th>
+              <th colSpan="4" className="gray-area"></th>
+            </tr>
+            
+            {/* Linha 2: Esquerda */}
+            <tr>
+              <td className="text-left-cell italic w-20">Esquerda</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td colSpan="4" className="gray-area"></td>
+            </tr>
+            
+            {/* Linha 3: Centro */}
+            <tr>
+              <td className="text-left-cell italic">Centro</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td colSpan="4" className="gray-area"></td>
+            </tr>
+            
+            {/* Linha 4: Direita */}
+            <tr>
+              <td className="text-left-cell italic">Direita</td>
+              <td className="h-7"></td>
+              <td></td>
+              <td></td>
+              <td colSpan="4" className="gray-area"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* MODO E MÉTODO DA CALIBRAÇÃO */}
+      <div className="grid grid-cols-2 gap-2 mb-2 text-[8.5px]">
         <div className="border border-black p-2">
-          <h4 className="font-bold mb-1 text-[9px]">Modo da Calibração:</h4>
-          <div className="flex items-center gap-2 text-[8px]">
-            <span className="w-3 h-3 border border-black inline-block"></span>
+          <div className="font-bold mb-1">Modo da Calibração:</div>
+          <div className="text-[7.5px]">
+            <span className="checkbox"></span>
             <span>Qualificação</span>
           </div>
         </div>
         <div className="border border-black p-2">
-          <h4 className="font-bold mb-1 text-[9px]">Método de Calibração:</h4>
-          <p className="text-[8px]">Calibração conforme procedimento técnico.</p>
+          <div className="font-bold mb-1">Método de Calibração:</div>
+          <div className="text-[7.5px]">Calibração conforme procedimento técnico.</div>
         </div>
       </div>
 
-      {/* Padrões Utilizados */}
-      <div className="border border-black p-2 mb-2">
-        <h4 className="font-bold mb-2 text-[9px]">Padrões Utilizados:</h4>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2 text-[8px]">
-              <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
+      {/* PADRÕES UTILIZADOS */}
+      <div className="border border-black p-2 mb-2 text-[8.5px]">
+        <div className="font-bold mb-1.5">Padrões Utilizados:</div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <div className="mb-0.5 text-[7.5px]">
+              <span className="checkbox"></span>
               <span>IP 77 - Luxímetro Digital</span>
             </div>
-            <div className="flex items-center gap-2 text-[8px]">
-              <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
+            <div className="mb-0.5 text-[7.5px]">
+              <span className="checkbox"></span>
               <span>IP 138 - Decibelímetro Digital</span>
             </div>
           </div>
-          <div className="space-y-1">
-            <div className="flex items-center gap-2 text-[8px]">
-              <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
+          <div>
+            <div className="mb-0.5 text-[7.5px]">
+              <span className="checkbox"></span>
               <span>IP 166 - Contador de Partículas</span>
             </div>
-            <div className="flex items-center gap-2 text-[8px]">
-              <span className="w-3 h-3 border border-black inline-block flex-shrink-0"></span>
+            <div className="mb-0.5 text-[7.5px]">
+              <span className="checkbox"></span>
               <span>IP 164 - Anemômetro Digital</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Observações */}
+      {/* OBSERVAÇÕES */}
       <div className="border border-black p-2 mb-2">
-        <h4 className="font-bold mb-1 text-[9px]">Observações:</h4>
-        <div className="border-b border-black h-3 mb-1"></div>
-        <div className="border-b border-black h-3 mb-1"></div>
-        <div className="border-b border-black h-3"></div>
-      </div>
-
-      {/* Footer */}
-      <div className="text-center text-[8px] text-gray-600">
+        <div className="font-bold mb-1.5 text-[8.5px]">Observações:</div>
+        <div className="border-b border-black mb-2" style={{height: '16px'}}></div>
+        <div className="border-b border-black mb-2" style={{height: '16px'}}></div>
+        <div className="border-b border-black" style={{height: '16px'}}></div>
       </div>
     </div>
   );
