@@ -333,7 +333,7 @@ export default function Index() {
           {/* Status Bar */}
           <div className="bg-neutral-900 border-t border-neutral-800 px-6 py-2 flex items-center justify-between text-xs text-neutral-400 flex-shrink-0">
             <div className="flex items-center gap-4">
-              <span>© 2024 Tecnoiso</span>
+              <span>© 2025 Tecnoiso</span>
               <div className="w-px h-3 bg-neutral-700"></div>
               <span>v1.0.0</span>
             </div>
