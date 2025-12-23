@@ -411,7 +411,6 @@ export function LaminarFlowHoodCalibrationForm() {
 
       {/* Footer */}
       <div className="text-center text-[8px] text-gray-600">
-        Página 1 de 1
       </div>
     </div>
   );
