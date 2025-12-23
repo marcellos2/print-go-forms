@@ -122,7 +122,6 @@
   .print-form {
     @apply bg-white text-black;
     font-family: 'Inter', Arial, sans-serif;
-    min-height: 100vh;
   }
 
   .print-table {
