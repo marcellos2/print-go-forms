@@ -35,13 +35,13 @@ export function PHMeterCalibrationForm() {
   return (
     <div className="print-form p-2 max-w-[210mm] mx-auto text-[8px] leading-tight">
       {/* Header */}
-      <h1 className="text-center font-bold text-[11px] mb-2 uppercase tracking-wide">
+      <h1 className="text-center font-bold text-[10px] mb-1 uppercase tracking-wide">
         Registro de Calibração de Medidor de pH
       </h1>
 
       {/* Main Info Grid */}
-      <div className="grid grid-cols-2 gap-x-4 mb-1">
-        <div className="space-y-0.5">
+      <div className="grid grid-cols-2 gap-x-4 mb-0.5">
+        <div className="space-y-1">
           <div className="flex">
             <span className="font-semibold w-20">Cliente:</span>
             <span className="flex-1 border-b border-black"></span>
@@ -75,7 +75,7 @@ export function PHMeterCalibrationForm() {
             <span className="flex-1 border-b border-black"></span>
           </div>
         </div>
-        <div className="space-y-0.5">
+        <div className="space-y-1">
           <div className="flex">
             <span className="font-semibold w-28">Tipo:</span>
             <span className="flex-1 border-b border-black"></span>
@@ -112,13 +112,13 @@ export function PHMeterCalibrationForm() {
       </div>
 
       {/* Calibration Sections */}
-      <div className="grid grid-cols-2 gap-2 mb-1">
+      <div className="grid grid-cols-2 gap-2 mb-0.5">
         {/* Sem Ajuste */}
         <div className="border border-black p-1">
-          <h3 className="font-bold text-center text-[8px] mb-0.5">
+          <h3 className="font-bold text-center text-[8px] mb-1">
             Calibração Sem Ajuste ou Antes do Ajuste
           </h3>
-          <div className="space-y-0.5 text-[8px]">
+          <div className="space-y-1 text-[8px]">
             <div className="flex">
               <span className="font-semibold w-32">Nº Certificado:</span>
               <span className="flex-1 border-b border-black"></span>
@@ -157,10 +157,10 @@ export function PHMeterCalibrationForm() {
 
         {/* Após Ajuste */}
         <div className="border border-black p-1">
-          <h3 className="font-bold text-center text-[8px] mb-0.5">
+          <h3 className="font-bold text-center text-[8px] mb-1">
             Calibração Após Ajuste
           </h3>
-          <div className="space-y-0.5 text-[8px]">
+          <div className="space-y-1 text-[8px]">
             <div className="flex">
               <span className="font-semibold w-32">Nº Certificado:</span>
               <span className="flex-1 border-b border-black"></span>
@@ -199,17 +199,17 @@ export function PHMeterCalibrationForm() {
       </div>
 
       {/* Medições */}
-      <h3 className="font-bold text-center text-[9px] mb-1">Medições</h3>
+      <h3 className="font-bold text-center text-[9px] mb-0.5">Medições</h3>
 
       {/* Two Column Layout for Measurements */}
-      <div className="grid grid-cols-2 gap-2 mb-1">
+      <div className="grid grid-cols-2 gap-2 mb-0.5">
         {/* LEFT COLUMN - Before Adjustment */}
         <div>
           {/* pH Scale */}
-          <h4 className="font-semibold text-[8px] text-center mb-0.5">
+          <h4 className="font-semibold text-[8px] text-center mb-0">
             Calibração Elétrica (Medidor de pH) - Escala em pH
           </h4>
-          <table className="print-table text-[7px] mb-1">
+          <table className="print-table text-[7px] mb-0.5">
             <thead>
               <tr>
                 <th>(VRP) pH</th>
@@ -222,7 +222,7 @@ export function PHMeterCalibrationForm() {
             <tbody>
               {phRowsBefore.map((row, idx) => (
                 <tr key={idx}>
-                  <td className="h-2.5">{row.vrp}</td>
+                  <td className="h-2">{row.vrp}</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -233,10 +233,10 @@ export function PHMeterCalibrationForm() {
           </table>
 
           {/* mV Scale */}
-          <h4 className="font-semibold text-[8px] text-center mb-0.5">
+          <h4 className="font-semibold text-[8px] text-center mb-0">
             Calibração Elétrica (Medidor de pH) - Escala em mV
           </h4>
-          <table className="print-table text-[7px] mb-1">
+          <table className="print-table text-[7px] mb-0.5">
             <thead>
               <tr>
                 <th>(VRP) mV</th>
@@ -248,7 +248,7 @@ export function PHMeterCalibrationForm() {
             <tbody>
               {mvRows.map((val, idx) => (
                 <tr key={idx}>
-                  <td className="h-2.5">{val}</td>
+                  <td className="h-2">{val}</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -258,7 +258,7 @@ export function PHMeterCalibrationForm() {
           </table>
 
           {/* Solution Calibration */}
-          <h4 className="font-semibold text-[8px] text-center mb-0.5">
+          <h4 className="font-semibold text-[8px] text-center mb-0">
             Calibração com Soluções (Medidor de pH e eletrodo) - Escala em pH
           </h4>
           <table className="print-table text-[7px]">
@@ -273,7 +273,7 @@ export function PHMeterCalibrationForm() {
             <tbody>
               {solutionRowsBefore.map((val, idx) => (
                 <tr key={idx}>
-                  <td className="h-2.5">{val}</td>
+                  <td className="h-2">{val}</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -290,10 +290,10 @@ export function PHMeterCalibrationForm() {
         {/* RIGHT COLUMN - After Adjustment */}
         <div>
           {/* pH Scale */}
-          <h4 className="font-semibold text-[8px] text-center mb-0.5">
+          <h4 className="font-semibold text-[8px] text-center mb-0">
             Calibração Elétrica (Medidor de pH) - Escala em pH
           </h4>
-          <table className="print-table text-[7px] mb-1">
+          <table className="print-table text-[7px] mb-0.5">
             <thead>
               <tr>
                 <th>(VRP) pH</th>
@@ -306,7 +306,7 @@ export function PHMeterCalibrationForm() {
             <tbody>
               {phRowsBefore.map((row, idx) => (
                 <tr key={idx}>
-                  <td className="h-2.5">{row.vrp}</td>
+                  <td className="h-2">{row.vrp}</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -317,10 +317,10 @@ export function PHMeterCalibrationForm() {
           </table>
 
           {/* mV Scale */}
-          <h4 className="font-semibold text-[8px] text-center mb-0.5">
+          <h4 className="font-semibold text-[8px] text-center mb-0">
             Calibração Elétrica (Medidor de pH) - Escala em mV
           </h4>
-          <table className="print-table text-[7px] mb-1">
+          <table className="print-table text-[7px] mb-0.5">
             <thead>
               <tr>
                 <th>(VRP) mV</th>
@@ -332,7 +332,7 @@ export function PHMeterCalibrationForm() {
             <tbody>
               {mvRows.map((val, idx) => (
                 <tr key={idx}>
-                  <td className="h-2.5">{val}</td>
+                  <td className="h-2">{val}</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -342,7 +342,7 @@ export function PHMeterCalibrationForm() {
           </table>
 
           {/* Solution Calibration */}
-          <h4 className="font-semibold text-[8px] text-center mb-0.5">
+          <h4 className="font-semibold text-[8px] text-center mb-0">
             Calibração com Soluções (Medidor de pH e eletrodo) - Escala em pH
           </h4>
           <table className="print-table text-[7px]">
@@ -357,7 +357,7 @@ export function PHMeterCalibrationForm() {
             <tbody>
               {solutionRowsBefore.map((val, idx) => (
                 <tr key={idx}>
-                  <td className="h-2.5">{val}</td>
+                  <td className="h-2">{val}</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -373,7 +373,7 @@ export function PHMeterCalibrationForm() {
       </div>
 
       {/* Método de Calibração */}
-      <div className="mb-1">
+      <div className="mb-0.5">
         <h4 className="font-bold text-[8px]">Método de Calibração:</h4>
         <p className="text-[8px]">
           Calibração por comparação indireta conforme procedimento técnico PTFQ 01.
@@ -381,8 +381,8 @@ export function PHMeterCalibrationForm() {
       </div>
 
       {/* Padrões Utilizados */}
-      <div className="mb-1">
-        <h4 className="font-bold text-[8px] mb-0.5">Padrões Utilizados:</h4>
+      <div className="mb-0.5">
+        <h4 className="font-bold text-[8px] mb-0">Padrões Utilizados:</h4>
         <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[8px]">
           {padroes.map((padrao, idx) => (
             <label key={idx} className="flex items-center gap-1">
@@ -394,18 +394,34 @@ export function PHMeterCalibrationForm() {
       </div>
 
       {/* Observações */}
-      <div className="mb-1">
+      <div className="mb-0.5">
         <h4 className="font-bold text-[8px] mb-0.5">Observações:</h4>
-        <div className="border-b border-black h-2.5 mb-0.5"></div>
-        <div className="border-b border-black h-2.5 mb-0.5"></div>
-        <p className="text-[7px] italic">* VRP - Valor de Referência Padrão.</p>
+        <div className="border border-black p-2 min-h-[60px]">
+          {/* Espaço para observações */}
+        </div>
       </div>
 
       {/* Footer */}
       <div className="text-center text-[8px] text-gray-600">
-    Página 1 de 1
+        Página 1 de 1
       </div>
 
+      <style jsx>{`
+        .print-table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        .print-table th,
+        .print-table td {
+          border: 1px solid black;
+          padding: 1px 2px;
+          text-align: center;
+        }
+        .print-table th {
+          background-color: #f3f4f6;
+          font-weight: 600;
+        }
+      `}</style>
     </div>
   );
 }
