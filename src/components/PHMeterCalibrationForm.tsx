@@ -394,9 +394,9 @@ export function PHMeterCalibrationForm() {
       </div>
 
       {/* Observações */}
-      <div className="mb-0.5">
-        <h4 className="font-bold text-[8px] mb-0.5">Observações:</h4>
-        <div className="border border-black p-2 min-h-[60px]">
+     <div className="border border-black p-2 mb-2">
+        <div className="font-bold mb-1.5 text-[8.5px]">Observações:</div>
+        <div className="min-h-[60px]">
           {/* Espaço para observações */}
         </div>
       </div>

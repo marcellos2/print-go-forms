@@ -294,11 +294,11 @@ export function FlowMeterBenchCalibrationForm() {
       </div>
 
       {/* Observações */}
-      <div>
-        <h4 className="font-bold text-[8px]">Observações:</h4>
-        <p className="text-[7px]">* Tipos convencionais: Eletromagnético, Mássico, Termal, Turbina, Ultrassônico e Diferencial de Pressão.</p>
-        <div className="border-b border-black h-3 mb-0.5"></div>
-        <div className="border-b border-black h-3"></div>
+       <div className="border border-black p-2 mb-2">
+        <div className="font-bold mb-1.5 text-[8.5px]">Observações:</div>
+        <div className="min-h-[60px]">
+          {/* Espaço para observações */}
+        </div>
       </div>
 
       {/* Footer */}

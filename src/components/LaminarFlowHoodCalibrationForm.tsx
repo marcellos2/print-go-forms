@@ -421,11 +421,11 @@ export function LaminarFlowHoodCalibrationForm() {
       </div>
 
       {/* OBSERVAÇÕES */}
-      <div className="border border-black p-2 mb-2">
+     <div className="border border-black p-2 mb-2">
         <div className="font-bold mb-1.5 text-[8.5px]">Observações:</div>
-        <div className="border-b border-black mb-2" style={{height: '16px'}}></div>
-        <div className="border-b border-black mb-2" style={{height: '16px'}}></div>
-        <div className="border-b border-black" style={{height: '16px'}}></div>
+        <div className="min-h-[60px]">
+          {/* Espaço para observações */}
+        </div>
       </div>
     </div>
   );
