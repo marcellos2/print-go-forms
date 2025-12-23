@@ -76,7 +76,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
         </div>
       </div>
 
-      <div ref={printRef} className="py-4">
+      <div ref={printRef} className="print-container py-4">
         {allForms.map((form, idx) => {
           const FormComponent = formComponents[form.equipmentType];
           const isLast = idx === allForms.length - 1;
@@ -88,7 +88,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
                 {selections.find((s) => s.equipmentType === form.equipmentType)?.quantity} (
                 {form.globalIndex + 1}/{totalFichas})
               </div>
-              <div className="bg-white shadow-md mx-auto mb-4" style={{ maxWidth: "210mm" }}>
+              <div className="print-page bg-white shadow-md mx-auto mb-4" style={{ maxWidth: "210mm" }}>
                 {/* Logo no topo */}
                 <div className="flex justify-end px-8 pt-6 pb-4">
                   <img 

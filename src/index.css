@@ -168,13 +168,48 @@
     print-color-adjust: exact;
   }
 
+  /* Evita página extra causada por containers com min-height: 100vh */
+  .min-h-screen {
+    min-height: auto !important;
+  }
+
+  /* Remove padding/margens do layout da aplicação na impressão */
+  #root {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .container {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Garante que o preview não force altura extra */
+  .print-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   .no-print {
     display: none !important;
   }
 
+  .print-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
   .print-break {
     page-break-after: always;
-    page-break-inside: avoid;
     break-after: page;
   }
 
