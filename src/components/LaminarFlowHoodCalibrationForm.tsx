@@ -18,6 +18,12 @@ export function LaminarFlowHoodCalibrationForm() {
           font-weight: 600;
           background-color: #f5f5f5;
         }
+        .table-title {
+          background-color: #d3d3d3 !important;
+          font-weight: bold !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
         .text-left-cell {
           text-align: left !important;
           padding-left: 6px !important;
@@ -238,8 +244,8 @@ export function LaminarFlowHoodCalibrationForm() {
           <tbody>
             {/* Linha 1: Títulos */}
             <tr>
-              <th colSpan="4" className="font-bold text-[8.5px]">Velocidade do Fluxo do Ar [m/s]</th>
-              <th colSpan="4" className="font-bold text-[8.5px]">Luminância Fluorescente [lux]</th>
+              <th colSpan="4" className="table-title text-[8.5px]">Velocidade do Fluxo do Ar [m/s]</th>
+              <th colSpan="4" className="table-title text-[8.5px]">Luminância Fluorescente [lux]</th>
             </tr>
             
             {/* Linha 2: Headers */}
@@ -284,12 +290,12 @@ export function LaminarFlowHoodCalibrationForm() {
               <td className="h-6"></td>
               <td></td>
               <td></td>
-              <th colSpan="4" className="font-bold text-[8.5px]">Luminância Ultravioleta [lux]</th>
+              <th colSpan="4" className="table-title text-[8.5px]">Luminância Ultravioleta [lux]</th>
             </tr>
             
             {/* Linha 6: Título Nível Sonoro */}
             <tr>
-              <th colSpan="4" className="font-bold text-[8.5px]">Nível Sonoro [dB]</th>
+              <th colSpan="4" className="table-title text-[8.5px]">Nível Sonoro [dB]</th>
               <td className="italic">Esquerda</td>
               <td className="h-6"></td>
               <td></td>
@@ -338,7 +344,7 @@ export function LaminarFlowHoodCalibrationForm() {
           <tbody>
             {/* Linha 1: Título */}
             <tr>
-              <th colSpan="4" className="font-bold text-[8.5px]">Contagem Eletrônica de Partículas</th>
+              <th colSpan="4" className="table-title text-[8.5px]">Contagem Eletrônica de Partículas</th>
               <th colSpan="4" className="gray-area"></th>
             </tr>
             
