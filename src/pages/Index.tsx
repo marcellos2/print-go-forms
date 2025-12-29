@@ -338,7 +338,7 @@ export default function Index() {
               <span>v1.0.0</span>
             </div>
             <div className="flex items-center gap-4">
-              <span>Certificado INMETRO</span>
+              <span>Certificados</span>
               <div className="w-px h-3 bg-neutral-700"></div>
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
