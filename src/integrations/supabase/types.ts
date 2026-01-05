@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      app_settings: {
+        Row: {
+          description: string | null
+          id: string
+          setting_key: string
+          setting_value: string | null
+          updated_at: string
+        }
+        Insert: {
+          description?: string | null
+          id?: string
+          setting_key: string
+          setting_value?: string | null
+          updated_at?: string
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          setting_key?: string
+          setting_value?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      calibration_history: {
+        Row: {
+          calibration_date: string | null
+          certificate_number: string | null
+          created_at: string
+          equipment_name: string
+          equipment_type: string
+          id: string
+          observations: string | null
+          status: string | null
+          technician_name: string | null
+        }
+        Insert: {
+          calibration_date?: string | null
+          certificate_number?: string | null
+          created_at?: string
+          equipment_name: string
+          equipment_type: string
+          id?: string
+          observations?: string | null
+          status?: string | null
+          technician_name?: string | null
+        }
+        Update: {
+          calibration_date?: string | null
+          certificate_number?: string | null
+          created_at?: string
+          equipment_name?: string
+          equipment_type?: string
+          id?: string
+          observations?: string | null
+          status?: string | null
+          technician_name?: string | null
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          session_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          session_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          session_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
