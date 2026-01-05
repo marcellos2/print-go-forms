@@ -406,7 +406,7 @@ export function PHMeterCalibrationForm() {
         Página 1 de 1
       </div>
 
-      <style jsx>{`
+      <style>{`
         .print-table {
           width: 100%;
           border-collapse: collapse;
