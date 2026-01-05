@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Printer, FileText, Search, Grid3x3, List, Package, Menu, X, Home, Settings, HelpCircle, LogOut, ChevronRight, Filter } from "lucide-react";
+import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, BarChart3, History as HistoryIcon } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
 import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory } from "@/config/equipments";
+import History from "./History";
+import Reports from "./Reports";
+import Help from "./Help";
+import Settings from "./Settings";
+
+type Page = "home" | "history" | "reports" | "help" | "settings";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -11,6 +17,7 @@ export default function Index() {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [currentPage, setCurrentPage] = useState<Page>("home");
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -20,7 +27,6 @@ export default function Index() {
     if (e) {
       e.stopPropagation();
     }
-    // Imprime apenas um equipamento com quantidade 1
     const selection: PrintSelection = { 
       equipmentType: equipmentId as any, 
       quantity: 1 
@@ -49,6 +55,20 @@ export default function Index() {
     );
   };
 
+  // Render other pages
+  if (currentPage === "history") {
+    return <History onBack={() => setCurrentPage("home")} />;
+  }
+  if (currentPage === "reports") {
+    return <Reports onBack={() => setCurrentPage("home")} />;
+  }
+  if (currentPage === "help") {
+    return <Help onBack={() => setCurrentPage("home")} />;
+  }
+  if (currentPage === "settings") {
+    return <Settings onBack={() => setCurrentPage("home")} />;
+  }
+
   if (printSelections !== null) {
     return <PrintPreview selections={printSelections} onBack={handleBack} />;
   }
@@ -68,10 +88,18 @@ export default function Index() {
         </div>
 
         <div className="ml-auto flex items-center gap-1">
-          <button className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors">
-            Ajuda
+          <button 
+            onClick={() => setCurrentPage("help")}
+            className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors flex items-center gap-1.5"
+          >
+            <HelpCircle className="w-3.5 h-3.5" />
+            MetroBot
           </button>
-          <button className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors">
+          <button 
+            onClick={() => setCurrentPage("settings")}
+            className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors flex items-center gap-1.5"
+          >
+            <SettingsIcon className="w-3.5 h-3.5" />
             Configurações
           </button>
           <div className="h-4 w-px bg-neutral-700 mx-2"></div>
@@ -101,18 +129,27 @@ export default function Index() {
 
             {/* Menu Items */}
             <nav className="flex-1 p-2 space-y-1">
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 bg-orange-50 text-orange-600 rounded-lg font-medium transition-colors">
+              <button 
+                onClick={() => setCurrentPage("home")}
+                className="w-full flex items-center gap-3 px-3 py-2.5 bg-orange-50 text-orange-600 rounded-lg font-medium transition-colors"
+              >
                 <Home className="w-4 h-4 flex-shrink-0" />
                 {!sidebarCollapsed && <span className="text-sm">Equipamentos</span>}
               </button>
               
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors">
-                <Printer className="w-4 h-4 flex-shrink-0" />
-                {!sidebarCollapsed && <span className="text-sm">Histórico de Impressões</span>}
+              <button 
+                onClick={() => setCurrentPage("history")}
+                className="w-full flex items-center gap-3 px-3 py-2.5 text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors"
+              >
+                <HistoryIcon className="w-4 h-4 flex-shrink-0" />
+                {!sidebarCollapsed && <span className="text-sm">Histórico</span>}
               </button>
               
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors">
-                <FileText className="w-4 h-4 flex-shrink-0" />
+              <button 
+                onClick={() => setCurrentPage("reports")}
+                className="w-full flex items-center gap-3 px-3 py-2.5 text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors"
+              >
+                <BarChart3 className="w-4 h-4 flex-shrink-0" />
                 {!sidebarCollapsed && <span className="text-sm">Relatórios</span>}
               </button>
 
