@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { ArrowLeft, Send, Bot, User, Loader2, Sparkles } from "lucide-react";
+import { ArrowLeft, Send, Bot, Loader2, Sparkles, RotateCcw, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -16,22 +15,28 @@ interface HelpProps {
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/metrobot`;
 
 const SUGGESTIONS = [
-  "Como calcular incerteza de medição?",
-  "O que é a norma ISO 17025?",
-  "Qual a periodicidade de calibração de balanças?",
-  "Como funciona a rastreabilidade metrológica?",
+  "Como calcular incerteza?",
+  "O que é ISO 17025?",
+  "Periodicidade de calibração",
+  "Rastreabilidade metrológica",
 ];
 
 export default function Help({ onBack }: HelpProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const sendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return;
@@ -62,7 +67,6 @@ export default function Help({ onBack }: HelpProps) {
       const decoder = new TextDecoder();
       let textBuffer = "";
 
-      // Add empty assistant message
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
       while (true) {
@@ -105,10 +109,9 @@ export default function Help({ onBack }: HelpProps) {
       console.error("MetroBot error:", error);
       toast({
         title: "Erro",
-        description: error instanceof Error ? error.message : "Erro ao conectar com o MetroBot",
+        description: error instanceof Error ? error.message : "Erro ao conectar",
         variant: "destructive",
       });
-      // Remove empty assistant message on error
       setMessages((prev) => prev.filter((m) => m.content !== ""));
     } finally {
       setIsLoading(false);
@@ -127,121 +130,177 @@ export default function Help({ onBack }: HelpProps) {
     }
   };
 
+  const copyToClipboard = async (text: string, index: number) => {
+    await navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  const clearChat = () => {
+    setMessages([]);
+    inputRef.current?.focus();
+  };
+
+  const formatMessage = (content: string) => {
+    // Simple markdown-like formatting
+    return content
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code class="bg-neutral-200 dark:bg-neutral-700 px-1 rounded text-sm">$1</code>');
+  };
+
   return (
-    <div className="h-screen flex flex-col bg-neutral-50">
-      {/* Header */}
-      <div className="h-14 bg-neutral-900 border-b border-neutral-800 flex items-center px-4 flex-shrink-0">
+    <div className="h-screen flex flex-col bg-[#212121]">
+      {/* Minimal Header */}
+      <div className="h-12 flex items-center justify-between px-4 border-b border-neutral-800">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors mr-4"
+          className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span className="text-sm">Voltar</span>
         </button>
-        <div className="h-6 w-px bg-neutral-700 mr-4"></div>
+        
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-            <Bot className="w-4 h-4 text-white" />
+          <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-600 rounded-md flex items-center justify-center">
+            <Bot className="w-3.5 h-3.5 text-white" />
           </div>
-          <div>
-            <span className="text-sm font-semibold text-white">MetroBot</span>
-            <span className="text-xs text-neutral-400 ml-2">Assistente de Metrologia</span>
-          </div>
+          <span className="text-sm font-medium text-white">MetroBot</span>
         </div>
+
+        {messages.length > 0 && (
+          <button
+            onClick={clearChat}
+            className="flex items-center gap-1.5 text-neutral-400 hover:text-white transition-colors text-sm"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            Nova conversa
+          </button>
+        )}
+        {messages.length === 0 && <div className="w-24" />}
       </div>
 
       {/* Chat Area */}
       <div className="flex-1 overflow-hidden flex flex-col">
-        <div className="flex-1 overflow-y-auto p-4">
-          <div className="max-w-3xl mx-auto space-y-4">
+        <div className="flex-1 overflow-y-auto">
+          <div className="max-w-3xl mx-auto py-6 px-4">
             {messages.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Bot className="w-10 h-10 text-white" />
+              <div className="flex flex-col items-center justify-center min-h-[60vh]">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Bot className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-neutral-900 mb-2">
-                  Olá! Sou o MetroBot 🤖
-                </h2>
-                <p className="text-neutral-600 mb-8 max-w-md mx-auto">
-                  Seu assistente especializado em metrologia e calibração. 
-                  Posso ajudar com normas, cálculos, dúvidas sobre equipamentos e muito mais!
+                <h1 className="text-2xl font-semibold text-white mb-2">
+                  Como posso ajudar?
+                </h1>
+                <p className="text-neutral-400 mb-8 text-center max-w-md">
+                  Pergunte sobre metrologia, calibração, normas ISO ou cálculos de incerteza.
                 </p>
 
-                {/* Suggestions */}
-                <div className="space-y-2">
-                  <p className="text-sm text-neutral-500 mb-3">Sugestões para começar:</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {SUGGESTIONS.map((suggestion) => (
-                      <button
-                        key={suggestion}
-                        onClick={() => sendMessage(suggestion)}
-                        className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-sm text-neutral-700 hover:border-orange-500 hover:text-orange-600 transition-all flex items-center gap-2"
-                      >
-                        <Sparkles className="w-3 h-3" />
-                        {suggestion}
-                      </button>
-                    ))}
-                  </div>
+                <div className="grid grid-cols-2 gap-2 w-full max-w-lg">
+                  {SUGGESTIONS.map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      onClick={() => sendMessage(suggestion)}
+                      className="px-4 py-3 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 hover:border-neutral-600 rounded-xl text-sm text-neutral-300 hover:text-white transition-all text-left flex items-start gap-2"
+                    >
+                      <Sparkles className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                      {suggestion}
+                    </button>
+                  ))}
                 </div>
               </div>
             ) : (
-              messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  {message.role === "assistant" && (
-                    <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="space-y-6">
+                {messages.map((message, index) => (
+                  <div key={index} className="group">
+                    {message.role === "user" ? (
+                      <div className="flex justify-end">
+                        <div className="max-w-[85%] bg-neutral-700 text-white rounded-2xl rounded-tr-md px-4 py-3">
+                          <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex gap-3">
+                        <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                          <Bot className="w-4 h-4 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div 
+                            className="text-sm text-neutral-200 leading-relaxed prose prose-invert prose-sm max-w-none"
+                            dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}
+                          />
+                          {message.content && !isLoading && (
+                            <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <button
+                                onClick={() => copyToClipboard(message.content, index)}
+                                className="flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-300 transition-colors"
+                              >
+                                {copiedIndex === index ? (
+                                  <>
+                                    <Check className="w-3 h-3" />
+                                    Copiado
+                                  </>
+                                ) : (
+                                  <>
+                                    <Copy className="w-3 h-3" />
+                                    Copiar
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+                
+                {isLoading && messages[messages.length - 1]?.content === "" && (
+                  <div className="flex gap-3">
+                    <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Bot className="w-4 h-4 text-white" />
                     </div>
-                  )}
-                  <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                      message.role === "user"
-                        ? "bg-orange-500 text-white"
-                        : "bg-white border border-neutral-200 text-neutral-800"
-                    }`}
-                  >
-                    <div className="whitespace-pre-wrap text-sm">{message.content}</div>
-                  </div>
-                  {message.role === "user" && (
-                    <div className="w-8 h-8 bg-neutral-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <User className="w-4 h-4 text-neutral-600" />
+                    <div className="flex items-center gap-1 py-2">
+                      <div className="w-2 h-2 bg-neutral-500 rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-neutral-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+                      <div className="w-2 h-2 bg-neutral-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
                     </div>
-                  )}
-                </div>
-              ))
-            )}
-            {isLoading && messages[messages.length - 1]?.content === "" && (
-              <div className="flex gap-3 justify-start">
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-4 h-4 text-white" />
-                </div>
-                <div className="bg-white border border-neutral-200 rounded-2xl px-4 py-3">
-                  <Loader2 className="w-4 h-4 animate-spin text-orange-500" />
-                </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
         </div>
 
-        {/* Input Area */}
-        <div className="border-t border-neutral-200 bg-white p-4">
+        {/* Input Area - ChatGPT Style */}
+        <div className="p-4">
           <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
-            <div className="flex gap-3">
-              <Textarea
+            <div className="relative bg-neutral-800 rounded-2xl border border-neutral-700 focus-within:border-neutral-600 transition-colors">
+              <textarea
+                ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Digite sua pergunta sobre metrologia..."
-                className="min-h-[48px] max-h-32 resize-none"
+                placeholder="Pergunte algo sobre metrologia..."
+                className="w-full bg-transparent text-white placeholder-neutral-500 resize-none px-4 py-3 pr-12 text-sm focus:outline-none min-h-[48px] max-h-32"
+                rows={1}
                 disabled={isLoading}
+                style={{
+                  height: 'auto',
+                  minHeight: '48px',
+                }}
+                onInput={(e) => {
+                  const target = e.target as HTMLTextAreaElement;
+                  target.style.height = 'auto';
+                  target.style.height = Math.min(target.scrollHeight, 128) + 'px';
+                }}
               />
               <Button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="bg-orange-500 hover:bg-orange-600 px-4"
+                size="icon"
+                className="absolute right-2 bottom-2 w-8 h-8 bg-orange-500 hover:bg-orange-600 disabled:bg-neutral-600 disabled:opacity-50 rounded-lg"
               >
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -250,7 +309,7 @@ export default function Help({ onBack }: HelpProps) {
                 )}
               </Button>
             </div>
-            <p className="text-xs text-neutral-400 mt-2 text-center">
+            <p className="text-xs text-neutral-600 mt-2 text-center">
               MetroBot pode cometer erros. Verifique informações importantes.
             </p>
           </form>
