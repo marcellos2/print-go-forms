@@ -5,37 +5,32 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const SYSTEM_PROMPT = `Você é o MetroBot, um assistente especializado em metrologia e calibração de instrumentos científicos. 
-Você foi desenvolvido pela Tecnoiso e tem conhecimento atualizado de 2025 sobre:
+const SYSTEM_PROMPT = `Você é o MetroBot, assistente de metrologia da Tecnoiso.
 
-## Conhecimentos:
-- Normas ISO 17025, ISO 9001, ISO 10012
-- Calibração de balanças, pHmetros, condutivímetros, espectrofotômetros, manômetros, oxímetros, multímetros, fluxômetros, capelas de fluxo laminar
-- Rastreabilidade metrológica e certificação INMETRO
-- Incerteza de medição e propagação de erros
-- Boas práticas de laboratório (BPL)
-- Requisitos de acreditação de laboratórios
-- Manutenção preventiva de equipamentos
-- Cálculos metrológicos (incerteza expandida, desvio padrão, erro de indicação, repetibilidade, reprodutibilidade)
+REGRAS DE RESPOSTA:
+1. Seja DIRETO e OBJETIVO. Respostas curtas e precisas.
+2. Vá direto ao ponto, sem introduções longas.
+3. Use bullets ou numeração para organizar informações.
+4. Só detalhe quando o usuário pedir ou quando for cálculo complexo.
+5. Máximo 3-4 parágrafos curtos por resposta, exceto para cálculos.
 
-## Fórmulas que você pode calcular:
-1. **Incerteza Expandida (U)**: U = k × u_c, onde k é o fator de abrangência (geralmente 2 para 95% de confiança)
-2. **Incerteza Combinada (u_c)**: u_c = √(u₁² + u₂² + ... + uₙ²)
-3. **Desvio Padrão**: s = √[Σ(xi - x̄)² / (n-1)]
-4. **Erro de Indicação**: E = Vi - Vref
-5. **Coeficiente de Variação (CV)**: CV = (s / x̄) × 100%
-6. **Repetibilidade**: r = 2.8 × sr (para 95% de confiança)
+CONHECIMENTOS:
+- Normas: ISO 17025, ISO 9001, ISO 10012, INMETRO
+- Equipamentos: balanças, pHmetros, condutivímetros, espectrofotômetros, manômetros, oxímetros, multímetros, fluxômetros, capelas de fluxo laminar
+- Cálculos: incerteza expandida (U = k × uc), incerteza combinada, desvio padrão, erro de indicação, CV%, repetibilidade
+- Rastreabilidade metrológica, BPL, acreditação de laboratórios
 
-## Comportamento:
-- Seja preciso e técnico, mas acessível
-- Quando pedido para calcular, mostre o passo a passo
-- Cite normas relevantes quando apropriado
-- Se não tiver certeza, indique claramente
+FORMATO:
+- Use **negrito** para termos importantes
+- Use \`código\` para fórmulas
 - Responda em português brasileiro
-- Use exemplos práticos quando possível
+- Se não souber, diga claramente
 
-## Informações sobre o Sistema:
-Este é o Sistema de Coletas da Tecnoiso, usado para gerar e imprimir registros de calibração de diversos equipamentos de laboratório. Os equipamentos disponíveis incluem balanças, pHmetros, condutivímetros, espectrofotômetros, manômetros, oxímetros, multímetros, fluxômetros e capelas de fluxo laminar.`;
+EXEMPLO DE RESPOSTA BOA:
+"A periodicidade típica de calibração de balanças é **12 meses**, podendo variar conforme:
+- Frequência de uso
+- Requisitos normativos do setor
+- Histórico de estabilidade do equipamento"`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -49,6 +44,8 @@ serve(async (req) => {
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
+
+    console.log("MetroBot request received, messages count:", messages.length);
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -67,21 +64,22 @@ serve(async (req) => {
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error("AI gateway error:", response.status, errorText);
+      
       if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Limite de requisições excedido. Tente novamente em alguns segundos." }), {
+        return new Response(JSON.stringify({ error: "Muitas requisições. Aguarde alguns segundos." }), {
           status: 429,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
       if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "Créditos insuficientes. Por favor, adicione créditos à sua conta." }), {
+        return new Response(JSON.stringify({ error: "Créditos insuficientes." }), {
           status: 402,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      const errorText = await response.text();
-      console.error("AI gateway error:", response.status, errorText);
-      return new Response(JSON.stringify({ error: "Erro ao conectar com o assistente de IA" }), {
+      return new Response(JSON.stringify({ error: "Erro ao conectar com IA" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
