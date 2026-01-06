@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, BarChart3, History as HistoryIcon } from "lucide-react";
+import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, History as HistoryIcon } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
 import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory } from "@/config/equipments";
 import History from "./History";
-import Reports from "./Reports";
 import Help from "./Help";
 import Settings from "./Settings";
 
-type Page = "home" | "history" | "reports" | "help" | "settings";
+type Page = "home" | "history" | "help" | "settings";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -58,9 +57,6 @@ export default function Index() {
   // Render other pages
   if (currentPage === "history") {
     return <History onBack={() => setCurrentPage("home")} />;
-  }
-  if (currentPage === "reports") {
-    return <Reports onBack={() => setCurrentPage("home")} />;
   }
   if (currentPage === "help") {
     return <Help onBack={() => setCurrentPage("home")} />;
@@ -143,14 +139,6 @@ export default function Index() {
               >
                 <HistoryIcon className="w-4 h-4 flex-shrink-0" />
                 {!sidebarCollapsed && <span className="text-sm">Histórico</span>}
-              </button>
-              
-              <button 
-                onClick={() => setCurrentPage("reports")}
-                className="w-full flex items-center gap-3 px-3 py-2.5 text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors"
-              >
-                <BarChart3 className="w-4 h-4 flex-shrink-0" />
-                {!sidebarCollapsed && <span className="text-sm">Relatórios</span>}
               </button>
 
               {!sidebarCollapsed && (
