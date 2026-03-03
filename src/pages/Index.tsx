@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, History as HistoryIcon } from "lucide-react";
+import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, History as HistoryIcon, Building2 } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
 import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory } from "@/config/equipments";
 import History from "./History";
 import Help from "./Help";
 import Settings from "./Settings";
+import Companies from "./Companies";
 
-type Page = "home" | "history" | "help" | "settings";
+type Page = "home" | "history" | "help" | "settings" | "companies";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -63,6 +64,9 @@ export default function Index() {
   }
   if (currentPage === "settings") {
     return <Settings onBack={() => setCurrentPage("home")} />;
+  }
+  if (currentPage === "companies") {
+    return <Companies onBack={() => setCurrentPage("home")} />;
   }
 
   if (printSelections !== null) {
@@ -139,6 +143,14 @@ export default function Index() {
               >
                 <HistoryIcon className="w-4 h-4 flex-shrink-0" />
                 {!sidebarCollapsed && <span className="text-sm">Histórico</span>}
+              </button>
+
+              <button 
+                onClick={() => setCurrentPage("companies")}
+                className="w-full flex items-center gap-3 px-3 py-2.5 text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors"
+              >
+                <Building2 className="w-4 h-4 flex-shrink-0" />
+                {!sidebarCollapsed && <span className="text-sm">Empresas</span>}
               </button>
 
               {!sidebarCollapsed && (

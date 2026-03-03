@@ -98,6 +98,80 @@ export type Database = {
         }
         Relationships: []
       }
+      companies: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      company_instruments: {
+        Row: {
+          codigo: string | null
+          company_id: string
+          created_at: string
+          erro_admissivel: string | null
+          faixa: string | null
+          id: string
+          instrumento: string
+          local_utilizacao: string | null
+          modelo: string | null
+          periodicidade: string | null
+          resolucao: string | null
+          status: string | null
+          unidade: string | null
+        }
+        Insert: {
+          codigo?: string | null
+          company_id: string
+          created_at?: string
+          erro_admissivel?: string | null
+          faixa?: string | null
+          id?: string
+          instrumento: string
+          local_utilizacao?: string | null
+          modelo?: string | null
+          periodicidade?: string | null
+          resolucao?: string | null
+          status?: string | null
+          unidade?: string | null
+        }
+        Update: {
+          codigo?: string | null
+          company_id?: string
+          created_at?: string
+          erro_admissivel?: string | null
+          faixa?: string | null
+          id?: string
+          instrumento?: string
+          local_utilizacao?: string | null
+          modelo?: string | null
+          periodicidade?: string | null
+          resolucao?: string | null
+          status?: string | null
+          unidade?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_instruments_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
