@@ -1,4 +1,6 @@
-export function OximeterCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function OximeterCalibrationForm({ data }: Props) {
   const measurementRows = Array(6).fill(null);
 
   const padroes = [

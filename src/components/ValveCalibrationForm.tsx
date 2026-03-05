@@ -1,4 +1,6 @@
-export function ValveCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function ValveCalibrationForm({ data }: Props) {
   const analysisRows = Array(4).fill(null);
 
   const padroes = [

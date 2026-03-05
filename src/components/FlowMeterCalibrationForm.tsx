@@ -1,4 +1,6 @@
-export function FlowMeterCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function FlowMeterCalibrationForm({ data }: Props) {
   const measurementRows = Array(8).fill(null);
 
   const padroes = [

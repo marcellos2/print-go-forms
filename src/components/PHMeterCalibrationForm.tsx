@@ -1,4 +1,6 @@
-export function PHMeterCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function PHMeterCalibrationForm({ data }: Props) {
   const phRowsBefore = [
     { vrp: "0,00", ref: "414,10" },
     { vrp: "2,00", ref: "295,80" },

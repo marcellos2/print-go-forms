@@ -1,4 +1,6 @@
-export function LaminarFlowHoodCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function LaminarFlowHoodCalibrationForm({ data }: Props) {
   return (
     <div className="p-4 max-w-[210mm] mx-auto text-[9px] leading-tight bg-white">
       <style>{`

@@ -1,4 +1,6 @@
-export function SpectrophotometerCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function SpectrophotometerCalibrationForm({ data }: Props) {
   const leftRows = [
     { wave: "380nm", std1: "0,717", filter1: "F2-1135", std2: "0,302", filter2: "F3-1135" },
     { wave: "420nm", std1: "0,699", filter1: "F3-1135", std2: "1,067", filter2: "F4-1135" },
