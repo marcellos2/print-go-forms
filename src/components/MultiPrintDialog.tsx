@@ -5,10 +5,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Printer, Minus, Plus } from "lucide-react";
 import type { EquipmentType } from "@/config/equipments";
+import type { InstrumentData } from "@/types/instrument";
 
 export type PrintSelection = {
   equipmentType: EquipmentType;
   quantity: number;
+  instrumentData?: InstrumentData;
 };
 
 interface EquipmentOption {

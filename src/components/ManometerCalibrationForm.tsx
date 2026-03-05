@@ -1,4 +1,11 @@
-export function ManometerCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+
+interface Props { data?: InstrumentData; }
+
+export function ManometerCalibrationForm({ data }: Props) {
+  const F = ({ v }: { v?: string | null }) => (
+    <span className="flex-1 border-b border-black min-w-0 px-0.5">{v || ""}</span>
+  );
   const measurementRows = Array(11).fill(null);
 
   const padroes = [
@@ -22,27 +29,27 @@ export function ManometerCalibrationForm() {
         <div className="space-y-1">
           <div className="flex">
             <span className="font-semibold w-24">Cliente:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.cliente} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Proprietário:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.proprietario} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Instrumento:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.instrumento} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Código:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.codigo} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Fabricante:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.fabricante} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Modelo:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.modelo} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Tipo:</span>
@@ -50,11 +57,11 @@ export function ManometerCalibrationForm() {
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Faixa:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.faixa} />
           </div>
           <div className="flex">
             <span className="font-semibold w-24">Valor de uma divisão:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.resolucao} />
           </div>
         </div>
 
@@ -74,15 +81,15 @@ export function ManometerCalibrationForm() {
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Erro Admissível:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.erro_admissivel} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Periodicidade:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.periodicidade} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Local de Utilização:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.local_utilizacao} />
           </div>
         </div>
       </div>

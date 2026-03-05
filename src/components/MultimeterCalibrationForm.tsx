@@ -1,4 +1,6 @@
-export function MultimeterCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function MultimeterCalibrationForm({ data }: Props) {
   const padroes = [
     "IP 97 - Multicalibrador",
     "IP 168 - Multímetro Padrão",

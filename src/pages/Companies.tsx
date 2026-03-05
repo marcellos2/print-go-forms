@@ -7,6 +7,9 @@ import {
   FileText, Printer, ChevronDown, ChevronUp, MapPin, Gauge, Clock
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { CompanyPrintFlow } from "@/components/CompanyPrintFlow";
+import { PrintPreview } from "@/components/PrintPreview";
+import type { PrintSelection } from "@/components/MultiPrintDialog";
 
 interface Company {
   id: string;
@@ -45,6 +48,8 @@ export default function Companies({ onBack, onPrintCompany }: CompaniesProps) {
   const [newCompanyName, setNewCompanyName] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
   const [expandedInstrument, setExpandedInstrument] = useState<string | null>(null);
+  const [printingCompany, setPrintingCompany] = useState<Company | null>(null);
+  const [printSelections, setPrintSelections] = useState<PrintSelection[] | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -56,6 +61,25 @@ export default function Companies({ onBack, onPrintCompany }: CompaniesProps) {
       fetchInstruments(selectedCompany.id);
     }
   }, [selectedCompany]);
+
+  // Show print preview
+  if (printSelections !== null) {
+    return <PrintPreview selections={printSelections} onBack={() => setPrintSelections(null)} />;
+  }
+
+  // Show company print flow
+  if (printingCompany) {
+    return (
+      <CompanyPrintFlow
+        company={printingCompany}
+        onBack={() => setPrintingCompany(null)}
+        onPrint={(selections) => {
+          setPrintingCompany(null);
+          setPrintSelections(selections);
+        }}
+      />
+    );
+  }
 
   const fetchCompanies = async () => {
     setLoading(true);
@@ -259,15 +283,13 @@ export default function Companies({ onBack, onPrintCompany }: CompaniesProps) {
           <Building2 className="w-4 h-4 text-orange-400" />
           <span className="text-sm font-semibold text-white">{selectedCompany.name}</span>
         </div>
-        {onPrintCompany && (
-          <Button
-            onClick={() => onPrintCompany(selectedCompany.id, selectedCompany.name)}
-            className="ml-auto gap-2 bg-orange-500 hover:bg-orange-600"
-          >
-            <Printer className="w-4 h-4" />
-            Imprimir Coletas
-          </Button>
-        )}
+        <Button
+          onClick={() => setPrintingCompany(selectedCompany)}
+          className="ml-auto gap-2 bg-orange-500 hover:bg-orange-600"
+        >
+          <Printer className="w-4 h-4" />
+          Imprimir Coletas
+        </Button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-6">

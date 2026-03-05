@@ -1,4 +1,11 @@
-export function BalanceCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+
+interface Props { data?: InstrumentData; }
+
+export function BalanceCalibrationForm({ data }: Props) {
+  const F = ({ v }: { v?: string | null }) => (
+    <span className="flex-1 border-b border-black min-w-0 px-0.5">{v || ""}</span>
+  );
   const measurementRows = [
     { padrao: '', vm1: '', vm2: '', vm3: '', ema: '' },
     { padrao: '', vm1: '', vm2: '', vm3: '', ema: '' },
@@ -27,31 +34,31 @@ export function BalanceCalibrationForm() {
         <div className="space-y-1">
           <div className="flex">
             <span className="font-semibold w-28">Cliente:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.cliente} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Proprietário:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.proprietario} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Instrumento:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.instrumento} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Código:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.codigo} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Fabricante:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.fabricante} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Modelo:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.modelo} />
           </div>
           <div className="flex gap-2">
             <span className="font-semibold">Escala:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.faixa} />
             <span className="font-semibold">e:</span>
             <span className="w-12 border-b border-black"></span>
             <span className="font-semibold">d:</span>
@@ -59,11 +66,11 @@ export function BalanceCalibrationForm() {
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Unidade de Medida:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.unidade} />
           </div>
           <div className="flex">
             <span className="font-semibold w-28">Local:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.local_utilizacao} />
           </div>
         </div>
 
@@ -95,7 +102,7 @@ export function BalanceCalibrationForm() {
           </div>
           <div className="flex">
             <span className="font-semibold w-36">Periodicidade:</span>
-            <span className="flex-1 border-b border-black"></span>
+            <F v={data?.periodicidade} />
           </div>
         </div>
       </div>

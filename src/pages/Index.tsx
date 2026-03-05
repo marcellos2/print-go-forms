@@ -66,7 +66,9 @@ export default function Index() {
     return <Settings onBack={() => setCurrentPage("home")} />;
   }
   if (currentPage === "companies") {
-    return <Companies onBack={() => setCurrentPage("home")} />;
+    return <Companies onBack={() => setCurrentPage("home")} onPrintCompany={(companyId, companyName) => {
+      // Navigate handled inside Companies via CompanyPrintFlow
+    }} />;
   }
 
   if (printSelections !== null) {

@@ -1,4 +1,4 @@
-import { Scale, Gauge, Settings2, Zap, Activity, Workflow, Droplets, FlaskConical, Eye, Waves, LucideIcon } from "lucide-react";
+import { Scale, Gauge, Settings2, Zap, Activity, Workflow, Droplets, FlaskConical, Eye, Waves, LucideIcon, Thermometer, Timer, Sun } from "lucide-react";
 
 export type EquipmentType = 
   | "balance" 
@@ -11,7 +11,11 @@ export type EquipmentType =
   | "conductivity-meter"
   | "spectrophotometer"
   | "oximeter"
-  | "laminar-flow-hood";
+  | "laminar-flow-hood"
+  | "temperature-humidity"
+  | "torque"
+  | "timer"
+  | "luxmeter";
 
 export type EquipmentCategory = "mecanico" | "eletrico" | "quimico" | "vazao";
 
@@ -59,6 +63,20 @@ export const equipments: Equipment[] = [
     icon: Settings2,
     category: "mecanico",
   },
+  {
+    id: "torque",
+    title: "Torque",
+    description: "Registro de calibração de instrumentos de torque",
+    icon: Settings2,
+    category: "mecanico",
+  },
+  {
+    id: "timer",
+    title: "Tempo / Cronômetro",
+    description: "Registro de calibração de cronômetros e temporizadores",
+    icon: Timer,
+    category: "mecanico",
+  },
   
   // Elétricos
   {
@@ -66,6 +84,13 @@ export const equipments: Equipment[] = [
     title: "Multímetro",
     description: "Registro de calibração de multímetros",
     icon: Zap,
+    category: "eletrico",
+  },
+  {
+    id: "luxmeter",
+    title: "Luxímetro",
+    description: "Registro de calibração de luxímetros",
+    icon: Sun,
     category: "eletrico",
   },
   
@@ -96,6 +121,13 @@ export const equipments: Equipment[] = [
     title: "Oxímetro",
     description: "Registro de calibração de oxímetros",
     icon: FlaskConical,
+    category: "quimico",
+  },
+  {
+    id: "temperature-humidity",
+    title: "Temperatura e Umidade",
+    description: "Registro de calibração de termohigrômetros e termômetros",
+    icon: Thermometer,
     category: "quimico",
   },
   

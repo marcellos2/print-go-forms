@@ -10,18 +10,25 @@ import { ConductivityMeterCalibrationForm } from "./ConductivityMeterCalibration
 import { SpectrophotometerCalibrationForm } from "./SpectrophotometerCalibrationForm";
 import { OximeterCalibrationForm } from "./OximeterCalibrationForm";
 import { LaminarFlowHoodCalibrationForm } from "./LaminarFlowHoodCalibrationForm";
+import { TemperatureHumidityCalibrationForm } from "./TemperatureHumidityCalibrationForm";
+import { TorqueCalibrationForm } from "./TorqueCalibrationForm";
+import { TimerCalibrationForm } from "./TimerCalibrationForm";
+import { LuxmeterCalibrationForm } from "./LuxmeterCalibrationForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
 import type { EquipmentType } from "@/config/equipments";
 import { getEquipmentTitle } from "@/config/equipments";
 import type { PrintSelection } from "./MultiPrintDialog";
+import type { InstrumentData } from "@/types/instrument";
 
 interface PrintPreviewProps {
   selections: PrintSelection[];
   onBack: () => void;
 }
 
-const formComponents: Record<EquipmentType, React.ComponentType> = {
+type FormComponent = React.ComponentType<{ data?: InstrumentData }>;
+
+const formComponents: Record<EquipmentType, FormComponent> = {
   balance: BalanceCalibrationForm,
   manometer: ManometerCalibrationForm,
   valve: ValveCalibrationForm,
@@ -33,6 +40,10 @@ const formComponents: Record<EquipmentType, React.ComponentType> = {
   "spectrophotometer": SpectrophotometerCalibrationForm,
   "oximeter": OximeterCalibrationForm,
   "laminar-flow-hood": LaminarFlowHoodCalibrationForm,
+  "temperature-humidity": TemperatureHumidityCalibrationForm,
+  "torque": TorqueCalibrationForm,
+  "timer": TimerCalibrationForm,
+  "luxmeter": LuxmeterCalibrationForm,
 };
 
 export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
@@ -45,7 +56,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
   const totalTypes = selections.length;
   const totalFichas = selections.reduce((sum, s) => sum + s.quantity, 0);
 
-  const allForms: { equipmentType: EquipmentType; index: number; globalIndex: number }[] = [];
+  const allForms: { equipmentType: EquipmentType; index: number; globalIndex: number; instrumentData?: InstrumentData }[] = [];
   let globalIndex = 0;
   selections.forEach((selection) => {
     for (let i = 0; i < selection.quantity; i++) {
@@ -53,6 +64,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
         equipmentType: selection.equipmentType,
         index: i,
         globalIndex: globalIndex++,
+        instrumentData: selection.instrumentData,
       });
     }
   });
@@ -99,7 +111,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
                 </div>
                 
                 {/* Formulário de Calibração */}
-                <FormComponent />
+                <FormComponent data={form.instrumentData} />
               </div>
             </div>
           );

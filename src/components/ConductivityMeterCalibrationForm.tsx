@@ -1,4 +1,6 @@
-export function ConductivityMeterCalibrationForm() {
+import type { InstrumentData } from "@/types/instrument";
+interface Props { data?: InstrumentData; }
+export function ConductivityMeterCalibrationForm({ data }: Props) {
   const measurementRows = Array(6).fill(null);
 
   const padroes = [
