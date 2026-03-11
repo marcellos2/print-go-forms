@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Printer, Minus, Plus } from "lucide-react";
+import { Printer, Minus, Plus, CheckSquare, Square } from "lucide-react";
 import type { EquipmentType } from "@/config/equipments";
 import type { InstrumentData } from "@/types/instrument";
 
@@ -80,14 +80,31 @@ export function MultiPrintDialog({ open, onOpenChange, equipments, onPrint }: Mu
     .filter((s) => s.selected)
     .reduce((sum, s) => sum + s.quantity, 0);
 
+  const allSelected = equipments.length > 0 && selectedCount === equipments.length;
+
+  const handleSelectAll = () => {
+    const newSelections = { ...selections };
+    const targetState = !allSelected;
+    equipments.forEach((eq) => {
+      newSelections[eq.id] = { ...newSelections[eq.id], selected: targetState };
+    });
+    setSelections(newSelections);
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg max-h-[80vh] overflow-hidden flex flex-col">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Printer className="w-5 h-5" />
-            Selecionar Fichas para Impressão
-          </DialogTitle>
+          <div className="flex items-center justify-between">
+            <DialogTitle className="flex items-center gap-2">
+              <Printer className="w-5 h-5" />
+              Selecionar Fichas para Impressão
+            </DialogTitle>
+            <Button variant="outline" size="sm" onClick={handleSelectAll} className="gap-1.5 text-xs">
+              {allSelected ? <Square className="w-3.5 h-3.5" /> : <CheckSquare className="w-3.5 h-3.5" />}
+              {allSelected ? "Desmarcar Todos" : "Selecionar Todos"}
+            </Button>
+          </div>
         </DialogHeader>
 
         <div className="flex-1 overflow-y-auto py-2 space-y-2">

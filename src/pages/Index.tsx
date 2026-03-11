@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, History as HistoryIcon, Building2 } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
-import { equipments, categories, getEquipmentsByCategory, pdfMap, type EquipmentCategory, type EquipmentType } from "@/config/equipments";
+import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory, type EquipmentType } from "@/config/equipments";
 import History from "./History";
 import Help from "./Help";
 import Settings from "./Settings";
@@ -23,38 +23,15 @@ export default function Index() {
     setDialogOpen(true);
   };
 
-  const openPdfCopies = (pdfPath: string, quantity: number) => {
-    for (let i = 0; i < quantity; i++) {
-      window.open(pdfPath, "_blank");
-    }
-  };
-
   const handlePrintSingle = (equipmentId: string, e?: React.MouseEvent) => {
     if (e) {
       e.stopPropagation();
     }
-
-    const equipmentType = equipmentId as EquipmentType;
-    const pdfPath = pdfMap[equipmentType];
-
-    if (pdfPath) {
-      openPdfCopies(pdfPath, 1);
-      return;
-    }
-
-    setPrintSelections([{ equipmentType, quantity: 1 }]);
+    setPrintSelections([{ equipmentType: equipmentId as EquipmentType, quantity: 1 }]);
   };
 
   const handlePrint = (selections: PrintSelection[]) => {
-    const balanceSelections = selections.filter((s) => pdfMap[s.equipmentType] === null);
-    const pdfSelections = selections.filter((s) => pdfMap[s.equipmentType] !== null);
-
-    pdfSelections.forEach((selection) => {
-      const pdfPath = pdfMap[selection.equipmentType];
-      if (pdfPath) openPdfCopies(pdfPath, selection.quantity);
-    });
-
-    setPrintSelections(balanceSelections.length > 0 ? balanceSelections : null);
+    setPrintSelections(selections);
   };
 
   const handleBack = () => {
