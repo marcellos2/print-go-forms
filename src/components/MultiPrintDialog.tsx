@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Printer, Minus, Plus } from "lucide-react";
+import { Printer, Minus, Plus, CheckSquare, Square } from "lucide-react";
 import type { EquipmentType } from "@/config/equipments";
 import type { InstrumentData } from "@/types/instrument";
 
