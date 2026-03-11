@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { BalanceCalibrationForm } from "./BalanceCalibrationForm";
+import { PdfPageRenderer } from "./PdfPageRenderer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
 import type { EquipmentType } from "@/config/equipments";
@@ -61,12 +62,7 @@ export function PrintPreview({ selections, onBack }: PrintPreviewProps) {
               </div>
               {page.pdf ? (
                 <div className="print-page bg-white shadow-md mx-auto mb-4" style={{ maxWidth: "210mm" }}>
-                  <iframe
-                    src={page.pdf}
-                    className="w-full border-0"
-                    style={{ height: "297mm", maxWidth: "210mm" }}
-                    title={`${getEquipmentTitle(page.equipmentType)} - ${page.index + 1}`}
-                  />
+                  <PdfPageRenderer src={page.pdf} />
                 </div>
               ) : (
                 <div className="print-page bg-white shadow-md mx-auto mb-4" style={{ maxWidth: "210mm" }}>
