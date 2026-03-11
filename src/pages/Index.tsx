@@ -57,6 +57,23 @@ export default function Index() {
     setPrintSelections(balanceSelections.length > 0 ? balanceSelections : null);
   };
 
+  const handleBack = () => {
+    setPrintSelections(null);
+  };
+
+  const filteredCategories = selectedCategory
+    ? categories.filter((c) => c.id === selectedCategory)
+    : categories;
+
+  const getFilteredEquipments = (categoryId: EquipmentCategory) => {
+    const categoryEquipments = getEquipmentsByCategory(categoryId);
+    if (!searchTerm) return categoryEquipments;
+    return categoryEquipments.filter((eq) =>
+      eq.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      eq.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
   // Render other pages
   if (currentPage === "history") {
     return <History onBack={() => setCurrentPage("home")} />;
