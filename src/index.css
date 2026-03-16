@@ -130,7 +130,9 @@
 
   .print-table th,
   .print-table td {
-    @apply border border-black p-1 text-xs;
+    @apply border p-1 text-xs;
+    border-color: #000;
+    border-width: 1.5px;
   }
 
   .print-table th {
@@ -138,7 +140,21 @@
   }
 
   .print-field {
-    @apply border-b border-black inline-block min-w-[100px];
+    @apply inline-block min-w-[100px];
+    border-bottom: 1.5px solid #000;
+  }
+
+  /* Linhas de campo mais visíveis em todos os formulários */
+  .print-form .border-b {
+    border-bottom-width: 1.5px !important;
+  }
+
+  .print-form .border-black {
+    border-color: #000 !important;
+  }
+
+  .print-form .border {
+    border-width: 1.5px !important;
   }
 }
 
