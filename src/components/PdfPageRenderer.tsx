@@ -27,8 +27,8 @@ export function PdfPageRenderer({ src }: PdfPageRendererProps) {
 
         for (let i = 1; i <= pdf.numPages; i++) {
           const page = await pdf.getPage(i);
-          // Render at 2x for quality, A4 at 150dpi
-          const scale = 2;
+          // Render at 4x for high quality print
+          const scale = 4;
           const viewport = page.getViewport({ scale });
 
           const canvas = document.createElement("canvas");
