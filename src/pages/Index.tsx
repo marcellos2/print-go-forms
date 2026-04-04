@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, History as HistoryIcon, Building2 } from "lucide-react";
+import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, Settings as SettingsIcon, History as HistoryIcon, Building2 } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
 import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory, type EquipmentType } from "@/config/equipments";
 import History from "./History";
-import Help from "./Help";
 import Settings from "./Settings";
 import Companies from "./Companies";
 
-type Page = "home" | "history" | "help" | "settings" | "companies";
+type Page = "home" | "history" | "settings" | "companies";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -55,9 +54,6 @@ export default function Index() {
   if (currentPage === "history") {
     return <History onBack={() => setCurrentPage("home")} />;
   }
-  if (currentPage === "help") {
-    return <Help onBack={() => setCurrentPage("home")} />;
-  }
   if (currentPage === "settings") {
     return <Settings onBack={() => setCurrentPage("home")} />;
   }
@@ -86,13 +82,6 @@ export default function Index() {
         </div>
 
         <div className="ml-auto flex items-center gap-1">
-          <button 
-            onClick={() => setCurrentPage("help")}
-            className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors flex items-center gap-1.5"
-          >
-            <HelpCircle className="w-3.5 h-3.5" />
-            MetroBot
-          </button>
           <button 
             onClick={() => setCurrentPage("settings")}
             className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors flex items-center gap-1.5"
