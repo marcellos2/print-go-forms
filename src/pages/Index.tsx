@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, HelpCircle, Settings as SettingsIcon, History as HistoryIcon, Building2 } from "lucide-react";
+import { Printer, FileText, Search, Grid3x3, List, Package, Menu, Home, Settings as SettingsIcon, History as HistoryIcon, Building2 } from "lucide-react";
 import { PrintPreview } from "@/components/PrintPreview";
 import { MultiPrintDialog, type PrintSelection } from "@/components/MultiPrintDialog";
 import { equipments, categories, getEquipmentsByCategory, type EquipmentCategory, type EquipmentType } from "@/config/equipments";
 import History from "./History";
-import Help from "./Help";
 import Settings from "./Settings";
 import Companies from "./Companies";
 
-type Page = "home" | "history" | "help" | "settings" | "companies";
+type Page = "home" | "history" | "settings" | "companies";
 
 export default function Index() {
   const [dialogOpen, setDialogOpen] = useState(false);
