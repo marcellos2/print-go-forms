@@ -83,13 +83,6 @@ export default function Index() {
 
         <div className="ml-auto flex items-center gap-1">
           <button 
-            onClick={() => setCurrentPage("help")}
-            className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors flex items-center gap-1.5"
-          >
-            <HelpCircle className="w-3.5 h-3.5" />
-            MetroBot
-          </button>
-          <button 
             onClick={() => setCurrentPage("settings")}
             className="px-3 py-1.5 text-xs text-neutral-300 hover:text-white hover:bg-neutral-800 rounded transition-colors flex items-center gap-1.5"
           >
