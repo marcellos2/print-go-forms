@@ -54,9 +54,6 @@ export default function Index() {
   if (currentPage === "history") {
     return <History onBack={() => setCurrentPage("home")} />;
   }
-  if (currentPage === "help") {
-    return <Help onBack={() => setCurrentPage("home")} />;
-  }
   if (currentPage === "settings") {
     return <Settings onBack={() => setCurrentPage("home")} />;
   }
